@@ -1436,6 +1436,36 @@ int mainloop()
 						if(gravity)
 							recentre(&prefx, &prefy);
 						break;
+					case SDLK_j:
+						{
+							slide * sl = slide_under_pointer();
+							if(sl != NULL)
+							{
+								int i = talk->find(sl);
+								if (i > 1) {
+									warp_to_slide(talk->item(i - 1));
+									fix_position(&prefx, &prefy);
+									scrollreqx = scrollreqy = 0;
+									refreshreq = 1;
+								}
+							}
+						}
+						break;
+					case SDLK_k:
+						{
+							slide * sl = slide_under_pointer();
+							if(sl != NULL) 
+							{
+								int i = talk->find(sl);
+								if (i + 1 < talk->count()) {
+									warp_to_slide(talk->item(i + 1));
+									fix_position(&prefx, &prefy);
+									scrollreqx = scrollreqy = 0;
+									refreshreq = 1;
+								}
+							}
+						}
+						break;
 					case SDLK_m:
 						memory_display = 1 - memory_display;
 						refreshreq = 1;
