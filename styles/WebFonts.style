@@ -1,0 +1,13 @@
+## Uncomment these once you have installed the MS web fonts:
+#titlefont=webfonts/arialbd.ttf
+#textfont=webfonts/arial.ttf
+#boldfont=webfonts/arialbd.ttf
+#italicfont=webfonts/ariali.ttf
+#fixedfont=webfonts/courbd.ttf
+
+## Alternatively, using serif typefaces:
+#titlefont=webfonts/timesbd.ttf
+#textfont=webfonts/times.ttf
+#boldfont=webfonts/timesbd.ttf
+#italicfont=webfonts/timesi.ttf
+#fixedfont=webfonts/courbd.ttf

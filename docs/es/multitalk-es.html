@@ -1,0 +1,1439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Linux)">
+	<META NAME="AUTHOR" CONTENT="mini">
+	<META NAME="CREATED" CONTENT="20080808;21551000">
+	<META NAME="CHANGEDBY" CONTENT="mini">
+	<META NAME="CHANGED" CONTENT="20080810;10232300">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin: 2cm }
+		P { margin-bottom: 0.21cm }
+		TD P { margin-bottom: 0cm }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="es-ES" DIR="LTR">
+
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><FONT SIZE=5 STYLE="font-size: 20pt">Multitalk
+</FONT>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm">Version 1.3, 2nd June 2008
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm">David Ingram
+(dmi1000@cam.ac.uk) 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Contenidos
+</FONT>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm">¿Por qué otro programa de
+	presentaciones?</P>
+	<LI><P STYLE="margin-bottom: 0cm">¿Qué hace que Multitalk sea
+	mejor?</P>
+	<LI><P STYLE="margin-bottom: 0cm">Requisitos para Linux</P>
+	<LI><P STYLE="margin-bottom: 0cm">Requisitos adicionales para LaTeX
+	embebido</P>
+	<LI><P STYLE="margin-bottom: 0cm">Requisitos para Mac OS X</P>
+	<LI><P STYLE="margin-bottom: 0cm">Especifidades en Mac OS X</P>
+	<LI><P STYLE="margin-bottom: 0cm">Nota para RPMs</P>
+	<LI><P STYLE="margin-bottom: 0cm">Instalación</P>
+	<LI><P STYLE="margin-bottom: 0cm">Cómo funciona</P>
+	<LI><P STYLE="margin-bottom: 0cm">Uso 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Ejemplos</P>
+	<LI><P STYLE="margin-bottom: 0cm">Controles del ratón</P>
+	<LI><P STYLE="margin-bottom: 0cm">Efecto de gravedad en las
+	diapositivas</P>
+	<LI><P STYLE="margin-bottom: 0cm">Controles del teclado</P>
+	<LI><P STYLE="margin-bottom: 0cm">Lenguaje de marcado</P>
+	<LI><P STYLE="margin-bottom: 0cm">Diapositivas en baraja</P>
+	<LI><P STYLE="margin-bottom: 0cm">Estilos</P>
+	<LI><P STYLE="margin-bottom: 0cm">Configuración de archivos</P>
+	<LI><P STYLE="margin-bottom: 0cm">Localización de archivos</P>
+	<LI><P STYLE="margin-bottom: 0cm">Imágenes</P>
+	<LI><P STYLE="margin-bottom: 0cm">Colores</P>
+	<LI><P STYLE="margin-bottom: 0cm">Fuentes</P>
+	<LI><P STYLE="margin-bottom: 0cm">Secciones Latex</P>
+	<LI><P STYLE="margin-bottom: 0cm">Consejos</P>
+	<LI><P STYLE="margin-bottom: 0cm">¿Qué hay de exportar/imprimir?</P>
+	<LI><P STYLE="margin-bottom: 0cm">Exención de responsabilidades</P>
+	<LI><P STYLE="margin-bottom: 0cm">Contacto</P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Copyright (c) David Ingram 2006-8 
+</P>
+<P STYLE="margin-bottom: 0cm">Este programa es software libre; puedes
+redistribuirlo y/o modificarlo bajo los términos de la GNU General
+Public License (version 2) publicada por la Free Software Foundation.
+Véase el archivo COPYING para más detalles.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">¿Por
+	qué otro programa de presentaciones?</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Multitalk es una nueva clase de
+programa para hacer presentaciones.</P>
+<P STYLE="margin-bottom: 0cm">Otros programas de presentaciones te
+fuerzan a organizar tu charla en un orden fijo y pasando a través de
+una secuencia establecida (a menudo mientras lees las diapositivas
+resultando aburrida a la audiencia).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Esto significa que en esos programas:</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">No hay manera de cambiar la
+	dirección de tu charla cuando la estás presentando basándote en
+	la reacción o retroalimentación que recibamos de la audiencia.</P>
+	<LI><P STYLE="margin-bottom: 0cm">No puedes tener “partes
+	opcionales” que puedas usar en charlas más largas o más
+	detalladas y no puedes ofrecer una visión de conjunto de otra
+	manera que no sea saltando diapositivas.</P>
+	<LI><P STYLE="margin-bottom: 0cm">No es fácil mostrar conceptos
+	centrales o ilustrar su progreso a través de la estructura de la
+	charla, excepto reinsertando una y otra vez copias de páginas de
+	contenidos.</P>
+</UL>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">El conferenciante no está
+	activamente implicado en dirigir la charla a través de la
+	explicación del material, lo que puede derivar en una pobre
+	comunicación. 
+	</P>
+	<LI><P STYLE="margin-bottom: 0cm">Actualizar múltiples charlas con
+	material compartido es difícil.</P>
+</UL>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">No puedes ver toda tu presentación
+	en el mismo espacio.</P>
+	<LI><P STYLE="margin-bottom: 0cm">En lo concerniente a la
+	presentación, no se enfatiza el contenido porque las diapositivas
+	son inicialmente diseñadas en un GUI en vez de texto plano.</P>
+	<LI><P STYLE="margin-bottom: 0cm">A menudo se usa la misma plantilla
+	para todas las diapositivas de la charla; poner el mismo
+	abstracto-pero-con-vaga-apariencia-vanguardista patrón coloreado en
+	la esquina de cada diapositiva, realmente no añade mucho a la
+	charla.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=2>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">¿Qué
+	hace que Multitalk sea mejor?</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Las diapositivas se muestran en un
+	espacio bidimensional en el que se puede elegir la dirección de
+	navegación en tiempo real.</P>
+	<LI><P STYLE="margin-bottom: 0cm">El texto de cada diapositiva se
+	escribe en un lenguaje de marcado usando un editor de texto normal.</P>
+	<LI><P STYLE="margin-bottom: 0cm">El lugar de las imágenes y
+	diapositivas se controlan de forma directa y manual, WYSIWYG (del
+	inglés, What You See Is What You Get, lo que ves es lo que
+	consigues), dentro del mismo programa. Esto es más rápido que un
+	puro lenguaje de marcado con comandos de espaciado.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Las diapositivas pueden ser de
+	cualquier tamaño y automáticamente se redimensiona para adecuar
+	sus contenidos; puedes ver múltiples pequeñas diapositivas de una
+	vez o parte de una muy grande, así que la unidad lógica no tiene
+	por qué ser el tamaño de la pantalla.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Puedes hacer un zoom de alejado
+	para reorganizar las diapositivas y conseguir una vista general de
+	la charla.</P>
+</UL>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Cada diapositiva actúa como una
+	carpeta contenedora en la que se pueden definir bloques de texto que
+	se pueden ocultar o mostrar durante la charla. Se pueden incluir
+	incluso imágenes.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Se pueden definir hipervínculos
+	entre las diferentes diapositivas.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Puedes definir tu propio estilo de
+	plantilla en cada diapositiva de forma independiente y cambiar el
+	aspecto visual de cada una para resaltar temas concretos. O sea, que
+	se pueden tener múltiples “dispositivas maestras”, en otras
+	palabras.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=3>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Requisitos
+	para Linux</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=3>Linux (y por tanto,
+	gcc, make, X11)</FONT></P>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=3>SDL, SDL_image,
+	SDL_ttf, SDL_gfx</FONT></P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=3>Sabemos que funcionan
+estas versiones de librerías SDL (si son más recientes, deberían
+ir bien también, por supuesto)</FONT></P>
+<P STYLE="margin-bottom: 0cm">    • SDL-1.2.7 
+</P>
+<P STYLE="margin-bottom: 0cm">    • SDL_image-1.2.3 
+</P>
+<P STYLE="margin-bottom: 0cm">    • SDL_ttf-2.0.6 
+</P>
+<P STYLE="margin-bottom: 0cm">    • SDL_gfx-2.0.13</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Para comprobar que si las tienes ya,
+prueba</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">	/sbin/ldconfig -v | grep -i sdl 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Puedes conseguir las fuentes de SDL en
+la página: http://www.libsdl.org/ 
+</P>
+<P STYLE="margin-bottom: 0cm">(haz clic en “Libraries” para las
+librerías añadidas). Todas se pueden construir con el usual: 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	./configure 
+</P>
+<P STYLE="margin-bottom: 0cm">	make 
+</P>
+<P STYLE="margin-bottom: 0cm">	make install</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Note that SDL_ttf further relies on
+libfreetype; however most Linux distributions already 
+</P>
+<P STYLE="margin-bottom: 0cm">come with this. 
+</P>
+<P STYLE="margin-bottom: 0cm">Algunas distribuciones Linux vienen con
+SDL, SDL_image y SDL_ttf preinstalado, pero no SDL_gfx, en cuyo caso
+solo tendrías que instalar ésta última tú mismo.</P>
+<P STYLE="margin-bottom: 0cm">Si no tienes acceso root, reemplaza el
+primer paso con:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	./configure –prefix=$HOME</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Esto instalará las librerías que
+necesitas en $HOME/lib y los archivos include en $HOME/include.</P>
+<P STYLE="margin-bottom: 0cm">En el proceso de compilación se
+buscarán estos archivos en estos directorios. Si tu instalas
+Multitalk por este camino dentro de tu directorio personal, también
+necesitarás establecer tu variable de entorno de librerías
+ejecutables antes de arrancar el programa:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	export
+LD_LIBRARY_CONFIG=$HOME/lib:$LD_LIBRARY_CONFIG 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=4>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Requisitos
+	adicionales para LaTeX embebido. </FONT>
+	</P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">    • latex 
+</P>
+<P STYLE="margin-bottom: 0cm">    • dvips 
+</P>
+<P STYLE="margin-bottom: 0cm">    • convert (parte of ImageMagick)</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<OL START=5>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Requisitos
+	para Mac OS X</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">    • Mac OS X 
+</P>
+<P STYLE="margin-bottom: 0cm">    • X11 
+</P>
+<P STYLE="margin-bottom: 0cm">    • SDL, SDL_image, SDL_ttf,
+SDL_gfx 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Puedes conseguir las librerías que
+necesites de DarwinPorts. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=6>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Especifidades
+	para Mac OS X</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">La fuente de instalación (make
+install) requiere opciones GNU para el comando cp que no están
+disponibles – te aconsejo que copies los archivos construidos a una
+localización adecuada a mano después de arrancar make. Mira el
+Makefile para ver qué es lo que se necesita copiar.</P>
+<P STYLE="margin-bottom: 0cm">La característica de mostrar el uso de
+memoria no funciona, porque desde el código se usa el /proc de
+Linux. Esto, probablemente, se podría permitir en OS X más tarde,
+cambiándolo para usar getrusage() del sistema, pero actualmente el
+monitor de memoria no debería estar activado.</P>
+<P STYLE="margin-bottom: 0cm">Al arrancar SDL en X11 en un Mac OS, el
+puntero del ratón parece estar obligado a estar en una única
+pantalla. Esto es una ligera molestia si quieres avanzar largas
+distancias de una vez; es necesario mover el ratón al centro
+ocasionalmente en vez de completar el avance con un único arrastre
+de ratón.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=7>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Nota
+	para RPMs</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Algunas distribuciones con este formato
+de empaquetado no incluyen todos los archivos necesarios para
+compilar las librerías a menos que también instales el juego de
+paquetes “-devel” (e.j. SDL-devel, etc). Un síntoma de esto es
+que no tengas el programa sdl-config o los archivos de cabecera
+necesarios. Si aún así no puedes, borrar las librerías RPMs y
+construirlas desde las fuentes, puede resultar más fácil. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=8>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Instalación</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Primero, asegúrate de tener todos los
+prerrequisitos instalados, como se describe en “Requisitos” más
+arriba.</P>
+<P STYLE="margin-bottom: 0cm">Entonces, si tu tienes acceso root,
+ejecuta los siguientes comandos:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	tar xzvf multitalk-1.0.tar.gz 
+</P>
+<P STYLE="margin-bottom: 0cm">	cd multitalk 
+</P>
+<P STYLE="margin-bottom: 0cm">	make 
+</P>
+<P STYLE="margin-bottom: 0cm">	su -c make install 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">La instalación por defecto pone los
+archivos en /usr/local. Puedes ajustar el Makefile si quieres
+cambiarlo.</P>
+<P STYLE="margin-bottom: 0cm">Si no tienes acceso root, reemplaza el
+último paso con: 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	make userinstall 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Si instalas Multitalk en un lugar
+no-estándar y tienes problemas para localizar los recursos (fuentes,
+estilos y gráficos), puedes necesitar establecer la variable de
+entorno MULTITALK_DIR (véase la sección más abajo “Localización
+de los archivos”).</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<OL START=9>
+	<LI><P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Cómo
+	funciona</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Crea un archivo con la extensión
+.talk, por ejemplo, foo.talk. Cuando Multitalk arranca, crea
+automáticamente un archivo llamado foo.graph. El archivo .talk
+contiene el texto para tu charla y algún marcado para el formato,
+mientras que el archivo .graph contiene las coordenadas de cada
+diapositiva en un espacio 2D. El primero siempre es editable por ti,
+pero el segundo no hace falta editarlo a mano porque lo mantiene
+Multitalk.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=10>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Uso</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">multitalk [opciones...] &lt;nombre-talk&gt;
+</P>
+<P STYLE="margin-bottom: 0cm">Opciones: 
+</P>
+<P STYLE="margin-bottom: 0cm">-fs		= pantalla completa 
+</P>
+<P STYLE="margin-bottom: 0cm">-win		= ventana 
+</P>
+<P STYLE="margin-bottom: 0cm">-nowatch	= no mirar los cambios en el
+archivo talk 
+</P>
+<P STYLE="margin-bottom: 0cm">-reverse	= invertir la dirección de
+avance del ratón 
+</P>
+<P STYLE="margin-bottom: 0cm">-force		= regenerar segmentos latex
+incluso si el texto no ha cambiado 
+</P>
+<P STYLE="margin-bottom: 0cm">              	(útil si los parámetros
+de estilo tal como text o background han</P>
+<P STYLE="margin-bottom: 0cm">               	sido modificados por
+diapositivas que contienen latex) 
+</P>
+<P STYLE="margin-bottom: 0cm">-version	= muestra la versión de
+Multitalk y sale.</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">El nombre-talk es la parte del archivo
+sin la extensión .talk (ej. foo para foo.talk).</P>
+<P STYLE="margin-bottom: 0cm">La pantalla de trabajo de Multitalk es
+siempre de 1024x768 pixeles actualmente y no puede ser
+redimensionado. Si estás arrancando a pantalla completa necesitarás
+una pantalla o proyector que pueda sincronizar a esta particular
+resolución (afortunadamente bastante común).</P>
+<P STYLE="margin-bottom: 0cm">Si no especificas -fs o -win, por
+defecto se abre a pantalla completa si la resolución máxima de la
+pantalla permite 1024x768, de otro modo abrirá en una ventana. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=11>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Ejemplos</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Un ejemplo de charla llamado about.talk
+se provee en el directorio examples. Está bien para explicar qué es
+Multitalk a una audiencia. 
+</P>
+<P STYLE="margin-bottom: 0cm">Para ver el ejemplo de charla, ejecuta:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">	multitalk examples/about.talk 
+</P>
+<P STYLE="margin-bottom: 0cm">	(Especifica la ruta completa al
+archivo about.talk). 
+</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<OL START=12>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Controles
+	del ratón</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Arrastra el ratón con el botón
+izquierdo para desplazarte por la ventana. La ventana de desplazará
+en la dirección del ratón. Si prefieres invertir este
+comportamiento, usa la opción -reverse en la línea de comandos.</P>
+<P STYLE="margin-bottom: 0cm">Arrastrar el ratón con el botón
+derecho alejará las diapositivas de la presentación y avanzará en
+la dirección del ratón (al soltar, volverán a acercarse las
+diapositivas y se centrará la pantalla). Este zoom tiene un factor
+de 3 en ambas coordenadas X e Y.</P>
+<P STYLE="margin-bottom: 0cm">Hacer clic con el botón izquierdo en
+un icono de carpeta (un cuadradito con un pequeño triángulo dentro)
+hará que despliegue o que se recoja esa parte del esquema o texto.</P>
+<P STYLE="margin-bottom: 0cm">Hacer clic con el botón izquierdo
+sobre un hipervínculo hará que se siga. 
+</P>
+<P STYLE="margin-bottom: 0cm">También se puede retornar desde un
+hipervínculo presionando con el botón izquierdo del ratón y a
+continuación presionar el derecho. Esto es útil si estás
+controlando la presentación completa desde un ratón inalámbrico y
+no puedes presionar la tecla Intro/Enter (véase más abajo).</P>
+<P STYLE="margin-bottom: 0cm">Hacer clic izquierdo en la barra de
+título de una carta del tipo “diapositiva de baraja” (ver abajo)
+para avanzar a la siguiente carta.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «shift»
+(mayúsculas) y arrastrar con el clic izquierdo de ratón cualquier
+imagen o diapositiva hará que se mueva. Las coordenadas se guardarán
+automáticamente cuando salgas del programa.</P>
+<P STYLE="margin-bottom: 0cm">En modo de «zoom alejado» puedes
+también arrastrar diapositivas con el ratón sin requerir de la
+tecla de mayúsculas (algo así como reorganizar ventanas con sus
+barras de título en el escritorio).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=13>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Efecto
+	de gravedad en las diapositivas</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Cuando liberas el botón del ratón
+tras arrastrar, si hay una diapositiva en las proximidades del centro
+de la pantalla, se centrará automáticamente, es decir, se asume que
+esta es la diapositiva de la que quieres hablar. Esto significa que
+no tienes que gastar tiempo en posicionar exactamente con el ratón
+las diapositivas cuando estás hablando y mirando a la audiencia.</P>
+<P STYLE="margin-bottom: 0cm">A veces, no se quiere este efecto de
+gravedad, por ejemplo cuando intentas ver múltiples diapositivas a
+la vez. Si presionas la tecla «Alt» cuando el botón del ratón es
+liberado, entonces el efecto de gravedad no se aplicará en esa
+acción. También se puede apagar/encender permanentemente este
+efecto, presionando la tecla «g».</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">14.
+Controles de teclado.</FONT></P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">Al presionar la tecla «<B>n</B>»
+aparecerá una pequeña ventana de “radar” translúcida abajo a
+la derecha para tener rápidamente una visión general de dónde se
+está.</P>
+<P STYLE="margin-bottom: 0cm">Las cuatro flechas del <B>cursor</B> se
+pueden usar para navegar entre diapositivas, como alternativa al
+ratón. Cuando presionas alguna de esas teclas, Multitalk mira en esa
+dirección y centrará la diapositiva que esté más cerca.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la <B>barra espaciadora</B>
+produce un permanente modo de “zoom alejado” (presionar de nuevo,
+vuelve a la normalidad). Esto es útil para reorganizar las
+diapositivas cuando se está editando un archivo talk.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>TAB</B>»
+cambia a modo de pantalla completa.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>INTRO</B>»
+retorna al punto desde donde se activó un hipervínculo.</P>
+<P STYLE="margin-bottom: 0cm">Presionar '.' (punto) avanza a la
+siguiente carta en una diapositiva de baraja y presionar ',' (coma)
+retrocede -esto es cuando el ratón está encima-.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>g</B>»
+enciende/apaga el efecto de gravedad.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>a</B>»
+enciende/apaga el modo de alineado-a-cuadrícula para diapositivas e
+imágenes.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>m</B>» muestra
+el actual uso de memoria de Multitalk.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>p</B>» muestra
+una gran flecha apuntadora desde un lateral de la pantalla. Esto se
+puede usar como al ternativa a un apuntador láser.</P>
+<P STYLE="margin-bottom: 0cm">Presionar la tecla «<B>r</B>» pide a
+Multitalk releer el actual archivo .talk. Esto es útil cuando estás
+simultáneamente editanto el archivo y viendo los resultados en el
+modo de ventana.</P>
+<P STYLE="margin-bottom: 0cm">Nota: este es solo necesario si
+comenzaste con la opción -nowatch como argumento, porque de otro
+modo, Multitalk checkea el archivo automáticamente dos veces por
+segundo.</P>
+<P STYLE="margin-bottom: 0cm">Presiona «Esc» para salir.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=15>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Lenguaje
+	de marcas (o de marcado)</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">El orden en que definas las
+	diapositivas no es significativo, ya que luego las moverás en 2D
+	desde Multitalk.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Los espacios en blanco se toman
+	literalmente (incluyendo nuevas líneas).</P>
+	<LI><P STYLE="margin-bottom: 0cm">Las líneas no se ajustan
+	automáticamente.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Un tabulador equivale a tres
+	espacios.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Instrucciones
+de líneas completas:</FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=76*>
+	<COL WIDTH=180*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>@Título de diapositiva</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Crea una diapositiva (terminando la anterior) y especifica su
+			título.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>@!ruta/a/imagen.png</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Crea una diapositiva de imagen, donde su contenido será
+			únicamente esa imagen (sin barra de título ni cuerpo de texto).
+			Cualquier contenido será ignorado hasta la próxima línea con @.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>!ruta/a/imagen.png</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Muestra una imagen dentro de la diapositiva actual. Esta clase
+			de imagen no se podrá arrastrar fuera del área de la
+			diapositiva.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>[</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Comienza una sección de carpeta con contenido desplegable.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>]</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Termina una sección de carpeta.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>:Título de diapositiva 
+			</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Convierte la línea previa en un hipervínculo, cuyo destino
+			será la diapositiva con ese título.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>!Estilo</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Establece el estilo de la diapositiva (se puede omitir para
+			tomar los valores predeterminados)</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>!n</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Indica el comienzo de un bloque que aparecerá sólo en la
+			carta número “n”</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>!abc</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Indica el comienzo de un bloque que aparecerá sólo en las
+			cartas con números “a”, “b”, “c”.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>!!</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Las líneas siguientes a esta marca aparecerán en todas las
+			cartas.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>\</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Comienza/termina una sección LaTeX.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>\)</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Comienza el centrado de una sección LaTeX</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>%space n</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Espacio vertical en “n” píxeles. 
+			</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=30%>
+			<P>--</P>
+		</TD>
+		<TD WIDTH=70%>
+			<P>Línea horizontal</P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">Instrucciones
+de comienzo de líneas:</FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=64*>
+	<COL WIDTH=192*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>*Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Punto de numeración.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>**Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Punto de segundo nivel de numeración.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>***Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Punto de tercer nivel de numeración.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>^ Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Tabula esta línea a la misma altura que la anterior (útil
+			cuando se quiere continuar una numeración en otra lína pero sin
+			otro nuevo punto).</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>) Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Centra la línea.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P># Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Comenta la línea.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>&gt; Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Formato de encabezado o título (más grande, negrita...)</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=25%>
+			<P>&gt;) Línea de texto</P>
+		</TD>
+		<TD WIDTH=75%>
+			<P>Formato de encabezado, pero centrado.</P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">  
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT SIZE=4 STYLE="font-size: 16pt">En
+cualquier sitio del texto:</FONT>    
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<TABLE WIDTH=100% BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+	<COL WIDTH=128*>
+	<COL WIDTH=128*>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>$foo bar$</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Entre estas marcas se usará la fuente de ancho fijo (fixed).
+			Se pueden incluir varias líneas.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>*foo bar*</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Negrita.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>/foo bar/</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Cursiva.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>%color</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Cambia el texto al color especificado (en inglés)</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>%</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Vuelve al color de texto predeterminado.</P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=50%>
+			<P>\X</P>
+		</TD>
+		<TD WIDTH=50%>
+			<P>Literal de escape (particularmente X útiles son *,/,$,\,% y
+			menos comunes @, !, ), ^,:, [, ]) 
+			</P>
+		</TD>
+	</TR>
+</TABLE>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=15>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Diapositivas
+	en baraja</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Las diapositivas en bajara permiten
+pasar a través de una secuencia de cambios (la aparición de nuevos
+puntos en una numeración, animación de gráficos, etc...) dentro de
+una diapositiva. Se muestran visualmente como una pequeña baraja de
+cartas. Si haces clic en la barra de título avanzarás de una carta
+a la siguiente, también presionando el punto y la coma se puede
+avanzar y retroceder en la baraja. En el archivo .talk se introducen
+las secciones que aparecerán en una o más cartas usando las
+siguientes líneas:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">!n    - comienza un bloque que
+aparecerá solo en el número de carta indicado en “n” (del 1 al
+9). 
+</P>
+<P STYLE="margin-bottom: 0cm">!pqr - empieza un bloque que aparecerá
+en las cartas p, q, r, etc (puede ser cualquier número).</P>
+<P STYLE="margin-bottom: 0cm">!!    - se mostrará lo mismo en todas
+las cartas. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Cada una de estas directivas se aplican
+a todas las siguiente líneas hasta que se especifique otra cosa o
+hasta que termine la actual diapositiva. La carta 1 es la carta
+inicial. Puedes referirte a las cartas hasta el número 9. La baraja
+tendrá la misma altura que el número de cartas usadas. Los bloques
+no se estrechan para llenar el mismo espacio; debes usar líneas en
+blanco si las secciones de diferentes cartas tienen diferente altura
+y quieres que se repita el mismo contenido en cada slide.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=15>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Estilos</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Los estilos se describen en los
+archivos que están en el directorio /styles. Por ejemplo, un archivo
+llamado styles/Foo.style especifica el estilo llamado Foo. Por
+convención los estilos comienzan con letra mayúscula.</P>
+<P STYLE="margin-bottom: 0cm">Cada archivo de estilo está en el
+formato de una secuencia de pares nombre-valor por cada línea. A
+continuación se muestra una lista de todos los posibles estilos. Los
+valores predeterminados están entre paréntesis (solo tienes que
+especificar las propiedades que quieras sobreescribir). 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Generalmente no hay restricciones en
+cualquiera de los valores (excepto las propiedades de color, que
+tienen que se un nombre de color válido y las propiedades boleanas
+que deben ser sí o no). Esto significa que podrían ocurrir cosas
+extrañas si picas fuera de las obligadas combinaciones; por ejemplo,
+podrías especificar un icono de carpeta que es más ancho que los
+márgenes de carpeta que se supone que hay. Si esto ocurre sería
+obvio visualmente y tu podrías elegir valores adecuados.</P>
+<P STYLE="margin-bottom: 0cm">Este enfoque se tomó para darte el
+poder de cambiar prácticamente todo. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Si creas un estilo llamado
+Default.style, las preferencias que tu sobreescribes con él serán
+usadas para cualquier diapositiva con ese estilo, en vez de los que
+están preestablecidos por código. (N.T.) Estos colores no se pueden
+traducir, Multitalk los comprende únicamente en inglés.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">textcolour=colour	[black] 
+</P>
+<P STYLE="margin-bottom: 0cm">bgcolour=colour	[white] 
+</P>
+<P STYLE="margin-bottom: 0cm">titlecolour=colour	[black] (titlebar
+text) 
+</P>
+<P STYLE="margin-bottom: 0cm">barcolour=colour	[yellow] (set to
+bgcolour if you want it indistinguishable) 
+</P>
+<P STYLE="margin-bottom: 0cm">linkcolour=colour	[purple] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet1colour=colour	[yellow] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet2colour=colour	[cyan] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet3colour=colour	[blue] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet1size=n 		[9] (specifies radius;
+shape is always circular) 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet2size=n 		[7] (specifies radius;
+shape is always circular) 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet3size=n 		[6] (always an ellipse,
+the lesser radius is two-thirds of n) 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet1icon=path/to/picture.png
+[built-in circle] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet2icon=path/to/picture.png
+[built-in circle] 
+</P>
+<P STYLE="margin-bottom: 0cm">bullet3icon=path/to/picture.png
+[built-in ellipse] 
+</P>
+<P STYLE="margin-bottom: 0cm">foldcollapsedcolour=colour	[green]
+(fixed shape) 
+</P>
+<P STYLE="margin-bottom: 0cm">foldexpandedcolour=colour	[yellow]
+(fixed shape) 
+</P>
+<P STYLE="margin-bottom: 0cm">foldexposed1colour=colour	[sky] (set to
+bgcolour if you want it invisible) 
+</P>
+<P STYLE="margin-bottom: 0cm">foldexposed2colour=colour	[grey] (set
+to bgcolour if you want it invisible) 
+</P>
+<P STYLE="margin-bottom: 0cm">foldexposed3colour=colour	[black] (set
+to bgcolour if you want it invisible) 
+</P>
+<P STYLE="margin-bottom: 0cm">foldcollapsedicon=path/to/picture.png
+[built-in] 
+</P>
+<P STYLE="margin-bottom: 0cm">foldexpandedicon=path/to/picture.png
+[built-in] 
+</P>
+<P STYLE="margin-bottom: 0cm">highlightcolour=colour	[red] (applies
+to links and fold icons when clicked on) 
+</P>
+<P STYLE="margin-bottom: 0cm">bgimage=path/to/picture.png	[none]
+(this is always scaled to fit) 
+</P>
+<P STYLE="margin-bottom: 0cm">bgtexture=path/to/picture.png [none]
+(this is always tiled / cropped to fit) 
+</P>
+<P STYLE="margin-bottom: 0cm">bgbar=yes|no			[yes] (bgimage /
+bgtexture also cover slide’s title bar) 
+</P>
+<P STYLE="margin-bottom: 0cm">enablebar=yes|no		[yes] (the slide
+title bar itself) 
+</P>
+<P STYLE="margin-bottom: 0cm">underlinelinks=yes|no		[yes] 
+</P>
+<P STYLE="margin-bottom: 0cm">logo=x,y,path/to/picture.png	[none]
+(you can repeat this for multiple logos) 
+</P>
+<P STYLE="margin-bottom: 0cm">  (x and y may be negative for
+placement relative to the right/bottom edges) 
+</P>
+<P STYLE="margin-bottom: 0cm">titlefont=font			[luxi/luxisb.ttf] 
+</P>
+<P STYLE="margin-bottom: 0cm">textfont=font			[luxi/luxisr.ttf] 
+</P>
+<P STYLE="margin-bottom: 0cm">fixedfont=font			[luxi/luximr.ttf] 
+</P>
+<P STYLE="margin-bottom: 0cm">boldfont=font			[luxi/luxisb.ttf] 
+</P>
+<P STYLE="margin-bottom: 0cm">italicfont=font			[luxi/luxisri.ttf] 
+</P>
+<P STYLE="margin-bottom: 0cm">titlesize=n			[40] 
+</P>
+<P STYLE="margin-bottom: 0cm">textsize=n			[36] (the size for plain
+text, bold and italic) 
+</P>
+<P STYLE="margin-bottom: 0cm">fixedsize=n			[26] 
+</P>
+<P STYLE="margin-bottom: 0cm">linespacing=n			[42] 
+</P>
+<P STYLE="margin-bottom: 0cm">titlespacing=n			[70] 
+</P>
+<P STYLE="margin-bottom: 0cm">bordercolour=colour		[black] 
+</P>
+<P STYLE="margin-bottom: 0cm">pictureborder=n		[1]      (border
+width; 0 = off) 
+</P>
+<P STYLE="margin-bottom: 0cm">slideborder=n			[1]  (border width; 0 =
+off) 
+</P>
+<P STYLE="margin-bottom: 0cm">barborder=n			[1]  (this is the
+dividing line between the titlebar and 
+</P>
+<P STYLE="margin-bottom: 0cm">                           		the main
+slide; 0 = off) 
+</P>
+<P STYLE="margin-bottom: 0cm">picturemargin=n		[15] 
+</P>
+<P STYLE="margin-bottom: 0cm">topmargin=n		[0] 
+</P>
+<P STYLE="margin-bottom: 0cm">bottommargin=n	[20] 
+</P>
+<P STYLE="margin-bottom: 0cm">leftmargin=n		[15] 
+</P>
+<P STYLE="margin-bottom: 0cm">foldmargin=n		[30] 
+</P>
+<P STYLE="margin-bottom: 0cm">rightmargin=n		[30] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexwidth=n		[550] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexscale=n		[300] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexbaselinestretch=n		[85] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexinclude=path/to/file.tex		[none] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexpreinclude=path/to/file.tex	[none]
+</P>
+<P STYLE="margin-bottom: 0cm">latexspaceabove=n	[5] 
+</P>
+<P STYLE="margin-bottom: 0cm">latexspacebelow=n	[0] 
+</P>
+<P STYLE="margin-bottom: 0cm">rulecolour=colour	[black] 
+</P>
+<P STYLE="margin-bottom: 0cm">ruleheight=n		[2] 
+</P>
+<P STYLE="margin-bottom: 0cm">rulewidth=percent	[85] 
+</P>
+<P STYLE="margin-bottom: 0cm">rulespaceabove=n	[10] 
+</P>
+<P STYLE="margin-bottom: 0cm">rulespacebelow=n	[5] 
+</P>
+<P STYLE="margin-bottom: 0cm">headspaceabove=n	[5] 
+</P>
+<P STYLE="margin-bottom: 0cm">headspacebelow=n	[10] 
+</P>
+<P STYLE="margin-bottom: 0cm"># comment line in style files</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<OL START=18>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Configuración
+	de archivos</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Multitalk busca un archivo de
+configuración en los siguientes lugares:</P>
+<P STYLE="margin-bottom: 0cm">    • /etc/multitalk.conf 
+</P>
+<P STYLE="margin-bottom: 0cm">    • $MULTITALK_DIR/multitalk.conf 
+</P>
+<P STYLE="margin-bottom: 0cm">    • ~/.multitalk/multitalk.conf 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Leerá cualquiera que exista. Si una
+opción es especificada en más de un archivo , las localizaciones
+posteriores tomarán esta lista como precedente.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Actualmente hay solo tres opciones de
+configuración, y se usan para especificar la localización de
+ejecutables necesarias para la característica de LaTeX  embebido.
+Esto es útil si no se encuentran en las localizaciones por defecto.
+Las opciones son:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">latexcmd=path/to/latex	[&quot;latex&quot;]
+</P>
+<P STYLE="margin-bottom: 0cm">dvipscmd=path/to/dvips	[&quot;dvips&quot;]
+</P>
+<P STYLE="margin-bottom: 0cm">convertcmd=path/to/convert	[&quot;convert&quot;]
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=19>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Localizaciones
+	de archivos</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">El binario de Multitalk puede estar en
+cualquier directorio. Él localiza sus recursos como sigue. Cuando
+invocas Multitalk, puedes suministrarle una ruta relativa o absoluta
+al archivo .talk. El directorio que contiene el .talk se conoce como
+directorio de proyecto. Multitalk busca las fuentes en las siguientes
+localizaciones, en este orden y parando en la primera que encuentra:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm">directorio/del/proyecto/fonts</P>
+	<LI><P STYLE="margin-bottom: 0cm">~/.multitalk/fonts/</P>
+	<LI><P STYLE="margin-bottom: 0cm">$MULTITALK_DIR/fonts/</P>
+	<LI><P STYLE="margin-bottom: 0cm">/usr/local/share/multitalk/fonts/ 
+	</P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">No produce ningún error si ninguno de
+ellos ni existe o si no se definió la variable de entorno
+MULTITALK_DIR.</P>
+<P STYLE="margin-bottom: 0cm">Multitalk mira buscando estilos en
+estos lugares:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm">directorio/del/proyecto/styles</P>
+	<LI><P STYLE="margin-bottom: 0cm">~/.multitalk/styles/</P>
+	<LI><P STYLE="margin-bottom: 0cm">$MULTITALK_DIR/styles/</P>
+	<LI><P STYLE="margin-bottom: 0cm">/usr/local/share/multitalk/styles/</P>
+</OL>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">Si el mismo estilo aparece en más de
+uno de esos lugares, se aplicarán, pero siguiendo el orden
+establecido en esta lista. Los archivos referido en los archivos de
+estilo (ej. las propiedades latexinclude y latexpreinclude) se buscan
+en las mismas cuatro localizaciones.</P>
+<P STYLE="margin-bottom: 0cm">Las imágenes con nombres absolutos
+(comenzando con un /) se buscan de la manera usual. Las imágenes con
+rutas relativas se buscan en el siguiente orden:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL>
+	<LI><P STYLE="margin-bottom: 0cm">directorio/del/proyecto/</P>
+	<LI><P STYLE="margin-bottom: 0cm">~/.multitalk/gfx/</P>
+	<LI><P STYLE="margin-bottom: 0cm">$MULTITALK/gfx/</P>
+	<LI><P STYLE="margin-bottom: 0cm">/usr/local/share/multitalk/gfx/ 
+	</P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=20>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Imágenes</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Se soportan los tipos PNG, GIF y JPEG.</P>
+<P STYLE="margin-bottom: 0cm">Se pueden tener múltiples imágenes
+dentro de cada diapositiva y las transparencias también están
+soportadas, así que ellas no tienen por qué ser rectangulares.</P>
+<P STYLE="margin-bottom: 0cm">Hay unas cuantas fotos, diagramas,
+iconos, logos, cliparts y texturas en el directorio gfx/ que son
+usadas por el ejemplo. Todas se pueden distribuir libremente y la
+mayoría se tomaron del proyecto open clipart.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=21>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Colores</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Hay 17 nombres de colores que se usan
+en las directivas % dentro del .talk y de los archivos de estilo. No
+son sensibles a mayúsculas.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">White		Brown		Pink		LightGreen 
+</P>
+<P STYLE="margin-bottom: 0cm">LightGrey	Red		Magenta	Green 
+</P>
+<P STYLE="margin-bottom: 0cm">Grey		Orange		Purple		Cyan 
+</P>
+<P STYLE="margin-bottom: 0cm">DarkGrey	Yellow		Blue 
+</P>
+<P STYLE="margin-bottom: 0cm">Black		Sky</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Los colores se pueden especificar
+también en hexadecimal, ej. #FFF00 sería el amarillo. Esto funciona
+en ambos archivos .talk y estilos.</P>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<OL START=22>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Fuentes</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Multitalk usa un amplio conjunto de
+fuentes libremente-distribuibles en el directorio de fuentes, así
+que puedes comenzar a usar esas tranquilamente. Puedes copiar también
+tus propias fuentes Truetype dentro del directorio y usarlas.</P>
+<P STYLE="margin-bottom: 0cm">Las fuentes gratuitas de la web de
+Microsoft funcionan bien, pero tristemente debido a restricciones en
+su licencia no se pueden incluir en este paquete como archivos .ttf
+(solo se pueden distribuir empaquetadas). Sin embargo, puedes
+descargarlas directamente de la web y extraerlas dentro de
+fonts/webfonts. El archivo WebFonts.style muestra cómo se usan;
+descomenta las apropiadas líneas en este archivo para elegir las
+fuentes. Deberías asegurarte de que al final estuvieran al menos los
+archivos arial.ttf arialbd.ttf, ariali.ttf, cour.ttf, times.ttf,
+timesbd.ttf and timesi.ttf. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=23>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Secciones
+	LaTeX</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">El uso de sintaxis LaTeX requiere de
+tres programas externos instalados en tu máquina: latex, dvips  y
+convert (el último es parte de ImageMagick). Si no están en tu
+ruta, puedes especificar sus localizaciones usando las opciones de
+configuración latexcmd, dvipscmd yconvertcmd.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Puede haber cualquier número de
+secciones por diapositiva y por presentación. Cada una se procesará
+independientemente por LaTeX. Multitalk guarda la salida como archivo
+PNG automáticamente en el directorio llamado foo.latex/ (si tu
+archivo se llama foo.talk). Los archivos PNG serán numerados. Si los
+archivos ya fueron generados, a la siguiente vez no se llamará a
+LaTeX para que los vuelva a generar, lo que mejorará
+considerablemente la velocidad de carga y te advertirá si algo va
+mal con LaTeX en tu presentación.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">A propósito, los directorios .latex no
+se limpian nunca, así que si haces muchas ediciones a tus secciones
+LaTeX, puedes desear borrar los archivos PNG de vez en cuando para
+ahorrar espacio en disco (Multitalk los regenerará cuando arranque).
+En otro caso, no necesitas prestarle ninguna atención al directorio
+.latex.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Una sección LaTeX puede abarcar
+múltiples líneas, no es posible insertar LaTeX como una fracción
+de una línea ordinaria. Tú puedes elegir alineación a la izquierda
+o centrada y controlar el ancho de la página por LaTeX.  El tamaño
+de la diapositiva se ajustará al contenido como se espera.</P>
+<P STYLE="margin-bottom: 0cm">Las secciones LaTeX comienzan y
+terminan con una única barra inclinada como esta:</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">\ 
+</P>
+<P STYLE="margin-bottom: 0cm">Algo de latex $e=mc^2$ 
+</P>
+<P STYLE="margin-bottom: 0cm">\ 
+</P>
+<P STYLE="margin-bottom: 0cm">Si quieres que una sección LaTeX esté
+centrada comienzala con una lína que contenga un paréntesis como
+esta \) en vez de como esta\, : 
+</P>
+<P STYLE="margin-bottom: 0cm">\) 
+</P>
+<P STYLE="margin-bottom: 0cm">Centrado \fbox{latex} 
+</P>
+<P STYLE="margin-bottom: 0cm">\ 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Las principales propiedades del archivo
+de estilo relacionadas con secciones LaTeX son latexwidth y
+latexscale.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">La propiedad latexwidth especifica el
+máximo de anchura de la página LaTeX en píxeles de pantalla. Por
+defecto son 550. La propiedad latexscale es un factor de
+magnificación que se puede usar para elegir el tamaño de fuente de
+LaTeX. Ten en cuenta que por defecto es de 300.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">El texto fuente latex que incluyes
+entre las barras inclinadas no deberían tener cabecera latex o
+cualquier \begin{documento} o \end{documento}, porque serán tratadas
+como fragmentos for Multitalk. Si necesitas cambiar la cabecera del
+documento puedes usar la propiedad de estilo latexpreinclude para el
+nombre del archivo que lo incluye conteniendo las líneas que deseas
+añadir. Este archivo es insertado en todos los documentos después
+de las líneas \usepackage en la cabecera, así que es un buen lugar
+para incluir cualquier declaración \usepackage adicional que
+necesites.</P>
+<P STYLE="margin-bottom: 0cm">La propiedad latexinclude es similar
+pero el archivo que se especifica es incluido después de la línea
+\begin {documento}, inmediatamente antes de tu fragmento fuente. Este
+es el lugar para poner cuerpo de los documentos latex que necesites
+en todos tus segmentos, tal como cambiar de fuente, para evitar
+escribirlas repetidamente.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Hay también una propiedad llamada
+latexbaselinestretch, que establece la varibable \baselinestretch en
+latex, pero que se expresa como un porcentaje entero, así por
+ejemplo, tu puedes escribir 
+</P>
+<P STYLE="margin-bottom: 0cm">latexbaselinestretch=120 si quieres un
+factor de estrechado del 1.2. El valor predeterminado es de 85
+(0.85). Esta característica es conveniente para elegir rápidamente
+el espaciado de latex en la diapositiva, ya que tú podrías insertar
+el comando manualmente usando la propiedad latexinclude.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=24>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Consejos</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Cuando comienzas Multitalk, la pantalla
+se centrará en la primera diapositiva de tu presentación (es una
+buena idea, por tanto, que éste sea el título de tu presentación).</P>
+<P STYLE="margin-bottom: 0cm">Cuando añades nuevas diapositivas a tu
+presentación, ellas aparecerán abajo y ligeramente a la izquierda
+de la localización de la diapositiva que la precede en el archivo
+.talk. Esto minimiza la posibilidad de que las diapositivas sean
+tapadas unas con otras, incluso cuando se añaden nuevas diapositivas
+a la vez. Probablemente, en seguida querrás hacer «zoom de alejar»
+y arrastrarlas a su sitio adecuado con el ratón.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Dentro del bloque de texto de ancho
+fijo (delimitado por signos $) los signos * y / se toman
+literalmente. Si quieres texto en negrilla o cursiva dentro de un
+segmento de ancho fijo (fixed-width) tienes que salir del bloque
+primero con $. 
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Advertencia: todas las diapositivas son
+pre-renderizadas y por tanto si tienes muchas te ocuparán mucha
+memoria.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=24>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">¿Qué
+	hay de exportar/imprimir?</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"> 
+</P>
+<P STYLE="margin-bottom: 0cm">Actualmente no es posible
+exportar/imprimir automáticamente una presentación desde Multitalk.
+Esto es debido en parte por la manera de tratar una presentación
+como una experiencia interactiva, que es más efectiva y menos
+cerrada que la relacionada con documentos en papel. Es más natural
+grabar una presentación Multitalk que imprimirla...</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=24>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Exención
+	de responsabilidades</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Este apartado se dirige a la sección
+“No Warranty” de la licencia. Si Multitalk se estropea durante
+una presentación en un auditorio lleno de personas muy importantes,
+el autor no se hace responsable de ello.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Es decir, obviamente que quiero que tu
+presentación tenga la mayor confianza posible (preferiblemente más
+que conocidas alternativas comerciales, que causan problemas de vez
+en cuando y no vienen con muchas más garantía por parte del
+vendedor). Puede haber un caso particular especialmente grave cuando
+está Multitalk arrancando en pantalla completa, ya que si  fallara
+podría colgar el servidor X y probablemente necesitarías reiniciar.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Si encuentra un fallo en Multitalk, por
+favor, repórtelo para que pueda ser arreglado. Asegúrese de testear
+la presentación antes de exponerla. Para presentaciones de
+particular importancia podría desear considerar tener una segunda
+máquina o un medio de backup disponible hasta que estés seguro de
+que todo esté bien.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL START=24>
+	<LI><P STYLE="margin-bottom: 0cm"> <FONT SIZE=4 STYLE="font-size: 16pt">Contacto</FONT></P>
+</OL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Reportar errores o fallos, petición de
+nuevas características y cualquier otra comunicación, pueden ser
+enviadas a: dmi1000@cam.ac.uk 
+</P>
+</BODY>
+</HTML>

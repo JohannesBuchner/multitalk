@@ -1,0 +1,32 @@
+\newenvironment{bulletlist}
+{
+	\begin{itemize}
+	\addtolength{\itemsep}{-1mm}
+	% \setlength{\itemsep}{0ex}
+	\setlength{\parsep}{0ex}
+}
+{
+	\end{itemize}
+}
+
+\newenvironment{alphalist}
+{
+	\begin{enumerate}
+	\setlength{\itemsep}{0ex}
+	\setlength{\parsep}{0ex}
+	\renewcommand{\labelenumi}{(\alph{enumi})}
+}
+{
+	\end{enumerate}
+}
+
+\newenvironment{numericlist}
+{
+	\begin{enumerate}
+	\addtolength{\itemsep}{-1mm}
+	% \setlength{\itemsep}{0ex}
+	\setlength{\parsep}{0ex}
+}
+{
+	\end{enumerate}
+}

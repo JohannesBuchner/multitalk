@@ -1,0 +1,374 @@
+Multitalk Changelog
+===================
+
+1 September, 2008 Released 1.4
+------------------------------
+
+- A copy of any slide can now be "pinned" to the top-right corner of
+  the screen by pressing the backspace key. At zoom levels 1 or 2 the
+  slide under the mouse pointer will be pinned, whereas at zoom level 0
+  the slide at the centre of the screen (if any) is pinned. If there
+  is already a pinned slide, pressing backspace unpins it.
+  Pinned slides are reduced to 50% in size and made slightly transparent;
+  they are frozen so you cannot manipulate features such as folding
+  sections, hyperlinks or stack rotation within them.
+  Be aware that due to the reduction in scale, pinned slides are
+  difficult for your audience to read!
+- The slash "/" key now provides a maximise function. When pressed,
+  the slide at the centre of the screen (or under the mouse pointer,
+  if you are at zoom levels 1 or 2) is maximised by scaling so that
+  it fills as much of the screen as possible (without distorting
+  its aspect ratio). This will generally enlarge the slide, although
+  it can also be used to reduce a slide to fit the screen, if it is too
+  big (of course, it is not good practice to design slides larger
+  than the screen, but this might happen if you are importing a big
+  diagram, or if unfolded sections make a slide overflow).
+  The maximised view is static: you cannot scroll around when maximised
+  nor activate slide features such as hyperlinks, folding sections
+  or stack rotation.
+  To exit maximised view, press any key or mouse button.
+- If the maximise key is pressed whilst a slide is pinned, it has
+  a different function: dual slide view. In this case both the
+  central slide and the pinned slide are shown side by side (and no
+  others). This is intended for situations where you need to compare
+  two slides from possibly distant parts of the talk. Dual slide view
+  is a static display, like the maximised single slide view.
+  The program decides intelligently whether to split the screen
+  horizontally or vertically, and what proportion of the space to
+  allocate to each slide, so that they are as large as possible and
+  displayed at the same zoom factor.
+  Note that you cannot compare two different cards from the same stack
+  with dual slide view, because the current card from each slide is
+  always shown.
+
+29 August, 2008
+---------------
+
+- There is now an "-export" command-line option, to export the talk to HTML.
+  The result is a collection of webpages in a directory called foo.html,
+  where foo is the name of the talk.
+  There is one page for each slide. Each page has a small navigation
+  image at the top (similar to the radar window in Multitalk), and the
+  slide image below.
+  The navigation image is an imagemap, so you can click on a slide's
+  outline there to load the appropriate page.
+  A cross on the navigation display marks the slide currently shown.
+  A title page called "index.html" is also generated, which shows one
+  large navigation image covering the whole talk.
+  The .talk filename and the title of the first slide are used as a heading.
+  Clicking on the background of any navigation image returns to the
+  title page.
+  Hyperlinks (text and image) are supported as you would expect.
+  Card stacks are also implemented; these are rotated by clicking on
+  special links which appear between the navigation image and the
+  slide image if there is more than one card.
+  Folding sections are supported in a limited way; namely two versions
+  of each slide are generated, one with all folding sections collapsed
+  and one with them all expanded. Clicking on any folding line switches
+  to the other representation, but it is not possible to selectively
+  expand some sections on a given slide. This is because there might
+  be an exponential number of combinations, which would take a lot
+  of disk space to store.
+- In zoom level 2, the "E" (examine) key now cycles between two modes
+  which provide some magnified information about the slide the mouse
+  pointer is currently hovering over:
+  o Default - display the slide's titlebar (50% scale) at top of screen.
+  o Alternative - display the whole slide at zoom level 1 in the
+                  bottom-right corner of the screen.
+  In both modes the overlay is slightly transparent.
+
+28 August, 2008
+---------------
+
+- Added options to change window/screen size from the default 1024x768:
+  -displaysize=x,y (command line option)
+  @designsize=x,y  (.talk file directive)
+  This is not just a matter of changing resolution, as we also try to
+  scale and clip the image so that talks look the same on different
+  displays. See the "Screen size" section of the documentation for more
+  details.
+- Added zoom level 2. The existing zoom is 3x3, "level 2" is 9x9.
+  Zoom level 2 is accessed by pressing Shift-SPACE.
+  In zoom level 2, all in-slide features are disabled (since they
+  would be too small to actually use), including hyperlinks (text or image),
+  folding and unfolding, and card stack rotation.
+  Also the radar window does not appear.
+  Instead, slides can be moved simply by dragging anywhere on them
+  (not just on the titlebar, as for zoom level 1).
+- Multiple slides can now be repositioned as a group.
+  To select a group, hold down the Ctrl key and wave the mouse pointer
+  in front of the slides you want. Selected slides have red corners.
+  Once selected, you can release the ctrl key (or press it again to
+  select further slides), then drag slides in the normal way. If one
+  of the selected slides is dragged, the whole group moves.
+  To clear a selection, press and release the Ctrl key without
+  selecting any further slides. Selecting and dragging groups may be
+  performed at any zoom level (0, 1 or 2).
+
+25 August, 2008
+---------------
+
+- Hyperlinks may now specify a particular card within a card stack.
+  For example,
+     :Slide title.3
+  is a reference to the third card in the relevant stack.
+  Thanks to Victor Lesk for the feature idea!
+- Floating images within a slide may now act as hyperlinks.
+  For example,
+     !image.png
+     :Slide title
+
+23 August, 2008
+---------------
+
+- Image file locations can now make use of the ~ character to specify
+  locations relative to a user's home directory (similar to the way
+  ~ is expanded by the shell). For example: ~/foo.png or ~fred/foo.png
+
+10 August, 2008
+---------------
+
+- Documentation in Spanish has now been added to the docs/ directory.
+  Thanks to Antonio Sánchez for translating this!
+- Minor bug fix for giant mouse pointer; thanks to Kevin Day for
+  noticing this.
+
+7 August, 2008
+--------------
+
+- New global option to set the background canvas colour (the area not
+  covered by slides):
+  @ canvascolour=colour
+  This configuration line may appear anywhere in the .talk file
+  (but not in style files).
+  The default is still grey.
+
+14 July, 2008
+-------------
+
+- Now recentres immediately when slide gravity is switched back on with
+  the 'G' key, instead of waiting for the next mouse movement.
+
+3 June, 2008 Released 1.3
+-------------------------
+
+- Custom colours: in addition to the 17 built-in colours, which are
+  referred to by name, colours can now be specified as #RRGGBB, both
+  in style files and % directives within the talk.
+
+2 June, 2008
+------------
+
+- Pressing the 'P' key now toggles a highly visible mouse pointer
+  (a giant arrow which points in from the edge of the screen).
+  This can be used as an alternative to a laser pointer.
+
+- Added headings. These are displayed in the same typeface and size as
+  the titlebar, but in the colour of the current running text and with
+  no special background.
+  Syntax:
+     ">Heading line"
+  or ">)Heading line" (centred equivalent)
+  There are two associated style parameters:
+     headspaceabove=n [5]
+     headspacebelow=n [10]
+  Headings currently have the same restrictions as title bar text,
+  namely that you cannot toggle bold, italic or fixed-width, or change
+  colour within them.
+
+30 May, 2008
+------------
+
+- Style files are now searched for in a subdirectory styles/ relative to the
+  directory containing the .talk file (the "project directory"), as well
+  as the three existing locations (one of which is in the user's home
+  directory, one in a system directory and one accessed via an environment
+  variable). It is not an error if there is no styles/ directory in the
+  project directory, however.
+
+  Fonts are similarly now looked for in a subdirectory fonts/ relative to
+  the directory containing the .talk file (if such exists), as well as in
+  the three locations searched previously.
+
+  These changes make it possible to create a completely self-contained
+  presentation within a given directory, including all necessary images,
+  styles and fonts. This is very useful if you wish to tar up a talk
+  and move it to another system, without also remembering to copy the
+  style files and without worrying about which fonts may be available.
+
+- Added two new style parameters for LaTeX mode:
+  latexspaceabove=n [5]
+  latexspacebelow=n [0]
+
+2 March, 2008
+-------------
+
+- Bug fix: changing point size without a subsequent typeface change for
+  a font in style files didn't actually take effect.
+- In windowed mode, the name of the talk file now appears in the titlebar.
+- Converted the README file to LaTeX (PS and PDF) documentation.
+
+29 February, 2008
+-----------------
+
+- Added Horizontal rules. Syntax is "--" on a line alone.
+  New style parameters for rules:
+  rulecolour     (colour)     [black]
+  ruleheight     (pixels)     [2]
+  rulewidth      (percentage) [85]
+  rulespaceabove (pixels)     [10]
+  rulespacebelow (pixels)     [5]
+
+26 June, 2007
+-------------
+
+- Several code cleanups, thanks to Kimura Masaru.
+  Now builds warning-free with -Wall.
+
+9 May, 2007
+-----------
+
+- Mouse clicks now operate on the point where you click, not the point
+  where you release (still assuming less than the click threshold distance
+  has been moved by the pointer since the click, otherwise it is purely
+  a drag scroll and not a click action). This is useful for gyromice, when
+  you want to set the click threshold much higher than usual to account
+  for jitter between click and release when trying to expand points
+  or follow links etc.
+
+17 March, 2007
+--------------
+
+- Added a startup check for duplicate slide titles (which would confuse
+  the program, since slides are identified internally by their titles).
+
+7 March, 2007
+-------------
+
+- Changed font rendering to UTF8 to support some non-LATIN1 characters.
+  Thanks to Vladimir Black for pointing this out.
+
+9 January, 2007, 1.2.1
+----------------------
+
+- Bug fix - corrected some redundant code on line 151 of datatype.h which
+  showed up as a compile-time error with some compilers.
+
+3 January, 2007 Released 1.2
+----------------------------
+
+- New vertical spacing command (for an n pixel space):
+  %space n
+
+- Added embedded LaTeX syntax sections within slides
+  Please see the heading "Latex sections" in the README file for full details.
+
+- New style properties for LaTeX mode:
+  latexwidth=n [550]
+  latexscale=n [300]
+  latexbaselinestretch=n [85]
+  latexinclude=path/to/file.tex [none]
+  latexpreinclude=path/to/file.tex [none]
+
+- Added 'force' command-line option, to insist on regeneration of all latex
+  segments (useful if style file options such as background/text colour have
+  been changed, but the latex text itself hasn't, so latex wouldn't normally
+  be re-run).
+
+- Added a configuration file mechanism
+  (see "Configuration files" in the README for details)
+
+- Created three config file options to support LaTeX mode:
+  latexcmd=path/to/latex     ["latex"]
+  dvipscmd=path/to/dvips     ["dvips"]
+  convertcmd=path/to/convert ["convert"]
+
+- Fixed a longstanding bug accessing a deleted structure when expanding and
+  collapsing sections (this wasn't dangerous due to a workaround put in place
+  before 1.0 in which the memory for the structure was not actually released,
+  but this now allows for proper deallocation)
+
+- A "-version" command-line option now displays the Multitalk version number
+
+12 December, 2006 Released 1.1
+------------------------------
+
+- Added grid alignment for images placed on slides.
+- Added control ('A' key) to toggle grid alignment mode on/off.
+
+11 December, 2006
+-----------------
+
+- Added "slide stack" feature, for slides which can be stepped through a
+  sequence of changes (new bullet points appearing, graphs animating etc).
+  These are shown visually like a small deck of cards on the canvas.
+  Click in the slide titlebar to advance to the next card in the stack,
+  or press comma/period to go back/forward.
+  In your .talk file you introduce a section of the slide to appear only
+  on certain cards in the stack with one of the following types of line:
+  !n   - indicates start of a block to appear only on card number n (1-9)
+  !pqr - start of a block to appear on cards p, q, r, etc (may be any number)
+  !!   - switch back to displaying the same thing on all cards
+  Each of these directives applies to all subsequent lines until you
+  specify otherwise or until the end of the current slide.
+  Card 1 is the initial card. You may refer to cards upto number 9.
+  The stack height will be the same as the maximum card number used.
+  Blocks are /not/ stretched to fill the same space - you must pad with
+  blank lines if sections on different cards are of non-equal height and
+  you want to line up repeated content lower down the slide.
+
+28 November, 2006
+-----------------
+
+Internal changes:
+
+- Performance improvements when clicking on fold icons/hyperlinks to
+  support new highlighting features: redraws are batched more
+  intelligently and slide repainting is more selective.
+
+- More general rendering architecture which allows for variable height
+  lines (useful to support future markup features).
+
+26 November, 2006
+-----------------
+
+- You can now fold images as well as text (just include the image
+  line inside a square bracketed section and the image will only
+  appear when the section is unfolded).
+
+- Fold/unfold and hyperlink actions now occur on mouse button
+  *releases* rather than presses, and only if the mouse has moved
+  5 pixels or less since the button was pressed. This avoids the problem
+  whereby a drag which accidentally started on a hot spot would trigger
+  the associated action as well as scrolling the screen. The
+  middle-mouse button workaround is now no longer needed. The downside
+  is that since these events now occur on mouse button releases,
+  nothing happens when you initially press the button down. To
+  compensate for this lack of visual feedback, fold icons and
+  hyperlinks are now immediately highlighted in red when you click on
+  them. This colour is configurable in style files with the new
+  property "highlightcolour". The highlight goes out when you release
+  the mouse button, or move the mouse more than 5 pixels.
+
+- Translucent "radar" window function - press "N" key (navigation)
+  to toggle it on or off.
+
+24 November 2006, 1.0.2
+-----------------------
+
+User interface improvements:
+
+- Added "-reverse" option to reverse the mouse scroll direction.
+
+- Cursor keys can now be used to navigate - they move smoothly to centre
+  the screen on the nearest slide in the direction you press.
+
+22 November 2006, 1.0.1
+-----------------------
+
+Minor documentation tweaks: clearer installation instructions.
+
+22 November 2006 Released 1.0
+-----------------------------
+
+First official release.

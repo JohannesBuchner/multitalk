@@ -1,0 +1,21 @@
+@840	0	Multitalk V1.3
+@1680	-40	About Multitalk
+@2680	0	Multitalk design concepts
++680	40	clipart/Lamp.png
+@3280	-120	!clipart/Seagull.png
+@2680	480	Navigation in 2D
++717	113	clipart/Boat.png
+@3280	-840	Multitalk design concepts II
+@3280	-1320	Multitalk design concepts III
+@3720	40	Folding text
+@4680	40	Slide stacks
++360	220	charts/games1.gif
++360	220	charts/games2.gif
++360	220	charts/games3.gif
+@5640	0	Potential problems
++689	4	clipart/PirateFlag.png
+@3280	-440	Slide styles
+@4160	-720	Style attributes
+@2680	-320	Digressions
+@2680	-1320	!photos/cave_crop.jpg
+@6600	0	Example slide source

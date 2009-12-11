@@ -1,0 +1,998 @@
+\documentclass[12pt,a4paper,twoside]{article}
+\usepackage{graphicx,fancyhdr}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{2ex plus1ex minus 0.5ex}
+
+\addtolength{\evensidemargin}{-2.5cm}
+\addtolength{\oddsidemargin}{-0.5cm}
+\addtolength{\textwidth}{3cm}
+
+\addtolength{\headheight}{0.2cm}
+\addtolength{\topmargin}{-2.5cm}
+\addtolength{\textheight}{2.5cm}
+
+% \newcommand{\source}[1]{\textbf{\verb^#1^}}}
+\renewcommand{\_}{\texttt{\symbol{95}}}
+\addtolength{\fboxsep}{0.1cm}
+\newcommand{\param}[1]{\textit{\textrm{\textmd{#1}}}}
+\newcommand{\codebar}{\rule{\textwidth}{0.3mm}}
+
+\newlength{\codelen}
+\newcommand{\code}[1]
+{\begin{center}\fbox{\parbox{16cm}{\texttt{#1}}}\end{center}}
+
+\newcommand{\todo}{\textbf{TODO}}
+\newcommand{\mission}[1]{\item[#1:]}
+% \newcommand{\mission}[1]{\texttt{#1}\hspace{3mm}}
+
+\fancyhead{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO,RE]{Multitalk}
+\fancyfoot{}
+\pagestyle{fancy}
+% \pagestyle{empty}
+
+\input{macros}
+\begin{document}
+
+\centerline{\textbf{\LARGE Multitalk}}
+\vspace{0.5cm}
+\centerline{Version 1.4, 1st September 2008}
+\centerline{David Ingram (\texttt{dmi1000@cam.ac.uk})}
+
+{ \parskip -3mm plus 0.1mm \tableofcontents }
+\newpage
+
+Copyright (c) David Ingram 2006-8
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License (version 2) as
+published by the Free Software Foundation. See the file COPYING for
+more details.
+
+\section{Why another presentation program?}
+
+Multitalk is a new kind of presentation program.
+
+Other presentation programs force you to arrange your talk in a fixed order,
+and then to step through it in sequence -- often while reading out the slides to
+the audience in a tedious manner! This means that in those programs:
+
+\begin{bulletlist}
+\item There's no way to change the direction of your talk at presentation-time
+  based on audience feedback.
+\item You can't have ``optional'' parts which you expand upon for longer, more
+  detailed talks and present at an overview level otherwise, except
+  by skipping slides.
+\item There's no easy way to show central concepts or illustrate one's
+  progress through the structure of the talk, except by regularly
+  reinserting copies of the contents page.
+\item The speaker isn't actively involved in steering through and explaining
+  the material, which can lead to poor communication.
+\item Updating multiple talks with shared material is difficult.
+\item You cannot view all of your talks in the same space.
+\item Presentation concerns are emphasised over content because slides are
+  initially designed in a GUI rather than as plain text.
+\item Often the same template is used for all slides in a talk; putting
+  the same abstract-but-vaguely-hitech-looking coloured pattern in the
+  corner of each slide doesn't really add much to the talk.
+\end{bulletlist}
+
+\section{What does Multitalk do better?}
+
+\begin{bulletlist}
+\item Slides are laid out for display in a \textit{two}-dimensional space which
+  you can choose to navigate in real time in any direction.
+\item Slide text is written in a markup language using a normal text editor.
+\item Image placement is still controlled in a WYSIWYG manner using the program
+  itself (which is quicker than pure markup language spacing commands).
+\item Slides can be any size and automatically resize to fit their contents;
+  you can view multiple small ones at once or part of very large ones, so
+  logical units don't have to be stretched to screen size.
+\item You can select two slides from anywhere in the talk and view them
+  side-by-side.
+\item You can zoom out to rearrange slides or get an overview of the talk.
+\item Each slide acts like a folding text editor, with definable blocks
+  which can be collapsed and expanded during the talk. You can fold
+  anything, including images.
+\item You can define hyperlinks between different slides, which are spatially
+  animated.
+\item You can define your own style templates to override all visual aspects,
+  and each slide can independently use any style to highlight topics as
+  required (you can have multiple ``master slides'' in other terminology).
+\end{bulletlist}
+
+\section{Requirements for Linux}
+
+\begin{bulletlist}
+\item Linux (and hence gcc, make, X11)
+\item \verb=SDL=, \verb=SDL_image=, \verb=SDL_ttf=, \verb=SDL_gfx=
+\end{bulletlist}
+
+These versions of the SDL libraries are known to work
+(more recent ones should be OK too of course):
+\begin{bulletlist}
+\item \verb=SDL-1.2.7=
+\item \verb=SDL_image-1.2.3=
+\item \verb=SDL_ttf-2.0.6=
+\item \verb=SDL_gfx-2.0.13=
+\end{bulletlist}
+
+To check which of these you already have, try
+
+\begin{verbatim}
+  /sbin/ldconfig -v | grep -i sdl
+\end{verbatim}
+
+You can get all these in source form from the SDL webpage:
+\verb^http://www.libsdl.org/^ (click ``Libraries'' for the add-on libraries).
+They all build with the usual
+
+\begin{verbatim}
+  ./configure
+  make
+  make install
+\end{verbatim}
+
+Note that \verb^SDL_ttf^ further relies on \verb^libfreetype^;
+however most Linux distributions already come with this.
+
+Some Linux distributions come with \verb^SDL^, \verb^SDL_image^ and
+\verb^SDL_ttf^ preinstalled but not \verb^SDL_gfx^, in which case you
+can install just the latter library yourself.
+
+If you do not have root access, replace the first step with
+
+\begin{verbatim}
+  ./configure --prefix=$HOME
+\end{verbatim}
+
+This will install the libraries you need in \verb^$HOME/lib^ and the
+include files in \verb^$HOME/include^. Multitalk's build process
+will find them in these directories. If you install into your
+home directory in this way you will also need to set your
+loadable library environment variable before running the program:
+
+\begin{verbatim}
+  export LD_LIBRARY_CONFIG=$HOME/lib:$LD_LIBRARY_CONFIG
+\end{verbatim}
+
+\section{Additional requirements for embedded LaTeX}
+
+\begin{bulletlist}
+\item latex
+\item dvips
+\item convert (part of ImageMagick)
+\end{bulletlist}
+
+\section{Requirements for Mac OS X}
+
+\begin{bulletlist}
+\item Mac OS X
+\item X11
+\item SDL, SDL\_image, SDL\_ttf, SDL\_gfx
+\end{bulletlist}
+
+You can get the libraries you need from DarwinPorts.
+
+\section{Known issues on Mac OS X}
+
+The installation target (\verb^make install^) requires GNU options to
+the \verb^cp^ command which are not available -- you are advised to copy
+the built files to a suitable location by hand after running \verb^make^.
+Look at the \verb^Makefile^ to see what needs to be copied.
+
+The memory use display feature does not work, because this is coded to use the
+Linux /proc filesystem. This could probably be enabled for OS X later by
+changing it to use \verb=getrusage()= on this system, but currently the memory
+display should not be activated.
+
+Running SDL on X11 on Mac OS the mouse pointer appears to be constrained to the
+screen, even when in full screen mode and with an invisible pointer. This is a
+slight annoyance if you want to scroll a long distance in one go; it is
+necessary to move the mouse back to the centre occasionally instead of
+completing the scroll with a single mouse drag.
+
+\section{Note on RPMs}
+
+Some distributions with this package format don't include all the files you
+need to compile against the libraries unless you also install a separate set of
+``-devel'' packages (e.g. SDL-devel, etc). Symptoms of this might be that you
+don't have the \verb=sdl-config= program or necessary header files. If you still
+can't get your distribution's packages to work you may find that removing the
+RPMs and building the libraries from source is actually easier.
+
+\section{Installation}
+
+First make sure you have all the prerequisites installed, as
+described in ``Requirements'' above. Then, if you have root access,
+run the following commands:
+
+\begin{verbatim}
+  tar xzvf multitalk-1.0.tar.gz
+  cd multitalk
+  make
+  su -c make install
+\end{verbatim}
+
+The default installation puts things in \verb^/usr/local^. You can tweak the
+Makefile if you want to change that.
+
+If you do not have root access, replace the final step with:
+
+\begin{verbatim}
+  make userinstall
+\end{verbatim}
+
+If you install Multitalk in a non-standard location and/or it has
+trouble locating resources (fonts, styles and graphics) you may need to
+set your \verb^MULTITALK_DIR^ environment variable (see the
+``File locations'' section below).
+
+\section{How it works}
+
+You create a file with the \verb=.talk= extension, say \verb=foo.talk=. When
+Multitalk runs it creates a file called \verb=foo.graph=. The \verb=.talk= file
+contains the text for your talk and some markup for formatting
+purposes, whereas the \verb=.graph= file contains the coordinates of each
+slide in 2D space. The former is always editable by you, but the latter
+should not generally be edited by hand because it is maintained by
+Multitalk.
+
+\section{Usage}
+
+\begin{verbatim}
+multitalk [options...] <talk-name>
+\end{verbatim}
+
+\textbf{Options:}
+
+\begin{tabular}{ll}
+\verb^-fs^      & full-screen\\
+\verb^-win^     & window\\
+\verb^-export^  & export HTML\\
+\verb^-nowatch^ & don't watch talk file for changes\\
+\verb^-reverse^ & reverse mouse scroll direction\\
+\verb^-force^   & regenerate latex segments even if text hasn't changed\\
+         & (useful if style parameters such as text or background\\
+         & colour have been modified for slides containing latex)\\
+\verb^-version^ & display the Multitalk version number and then exit\\
+\verb^-displaysize=^\textit{width}\verb^x^\textit{height}
+         & set window/screen size in pixels\\
+\end{tabular}
+
+The talk-name is the part of the filename without the \verb=.talk=
+extension (e.g. \verb=foo= for \verb=foo.talk=).
+
+If you don't specify either \verb^-fs^ or \verb^-win^,
+the default is to open fullscreen if
+the maximum resolution of the display device is the required size,
+and otherwise to open in a window.
+
+\section{Examples}
+
+A sample talk called \verb=about.talk= is provided in the examples directory.
+This is suitable for explaining Multitalk itself to an audience.
+You may want to merge these slides with your own talks. To view
+the sample talk, run
+
+\begin{verbatim}
+  multitalk examples/about.talk
+\end{verbatim}
+  
+(Specify the full path to the \verb=about.talk= file).
+
+\section{Mouse controls}
+
+Drag the mouse with the left mouse button to scroll the window. The
+window scrolls in the direction you move the mouse. If you prefer to
+``pull'' the canvas instead, start Multitalk with the \verb^-reverse^ command
+line option to invert the mouse drag directions.
+
+Drag the mouse with the right mouse button to zoom out and scroll
+(when you release the right mouse button the window zooms back in,
+centred on the centre of the screen).
+The zoom is by a factor of 3 on both X and Y axes.
+
+Click with the left mouse button on a line with a fold icon (a square
+containing a small triangle) to unfold/fold.
+
+Click with the left mouse button on a hyperlink to follow it.
+
+You can also return from a hyperlink by holding down the left mouse
+button, then pressing the right one. This is useful if you are
+controlling the entire presentation by wireless mouse and can't
+reach the keyboard in order to press the Return key (see below).
+
+Click with the left mouse button on the title bar of a card in a slide
+stack (see below) to advance to the next card in the stack.
+
+Hold down the \textbf{Shift} key and drag with the left mouse button over
+any slide or image to move it. The coordinates of moved slides are
+automatically saved for you when you quit the program.
+
+In zoomed out mode, you can also drag slide titlebars with the left
+mouse button without requiring the shift key (a bit like rearranging
+windows with their titlebar on your desktop).
+
+Hold down the \textbf{Ctrl} key and move the mouse pointer over slides
+in order to select a group of slides. These can then be dragged to a
+new position as a group. Selected slides are shown with red corners.
+Press and release the \textbf{Ctrl} key without selecting any more
+slides in order to clear a group selection.
+
+\section{Slide gravity}
+
+When you release the mouse button after dragging, if there is a slide
+somewhere in approximately the middle of the screen, the display will
+automatically scroll in order to centre it (on the assumption that this
+is the slide you want to talk about). This means that you just have to
+push the mouse to roughly the right position and don't waste time
+positioning exactly when you should be looking at the audience.
+
+Occasionally you don't want slide gravity, for example when you are
+trying to view multiple smaller slides at once. If the \textbf{Alt} key
+is held down when the mouse button is released then the slide gravity
+effect will not take place for that action. You can also toggle slide
+gravity permanently off or on by pressing the \textbf{G} key.
+
+\section{Zoom levels}
+
+Normal operation is zoom level 0. Use of the spacebar or right mouse button
+switches to zoom level 1. Shift-space enters zoom level 2. Zoom level 1
+reduces slides by the factor 3x3, whereas zoom level 2 uses 9x9.
+Slide features such as hyperlinks, card stack rotation and folding
+sections can be operated at zoom levels 0 or 1, but not 2.
+
+Repositioning
+slides at zoom level 0 must be accomplished by holding down the shift
+key, then dragging with the left mouse button. At zoom level 1, there
+is the additional option of dragging the slide titlebars without
+needing the shift key. At zoom level 2, slides can be moved by dragging
+them anywhere - not just in the titlebar.
+Selecting a group of slides and repositioning them together may be
+done at any of the three zoom levels.
+
+\section{Keyboard controls}
+
+Press the \textbf{N} key to switch on a translucent navigation
+``radar'' window, which appears in the bottom-right corner of the screen.
+
+The four \textbf{cursor} keys can be used to move between slides, as an
+alternative to dragging with the mouse. When you press one of these
+keys, Multitalk looks in that general direction from the current
+centre of the screen and decides which slide is closest. It then
+scrolls across so that this slide is centred on the screen.
+
+Press the \textbf{Space} bar to switch to constant zoom mode (press space
+again to switch zoom off). This is mainly useful for rearranging
+your slides when editing a talk.
+
+Press \textbf{Shift-Space} to switch to zoom level 2 (extra zoom).
+
+Press the \textbf{TAB} key to toggle fullscreen mode.
+
+Press \textbf{Return} to go back to the launch point from the last hyperlink.
+
+Press the `\textbf{.}' (period) key whilst the mouse is over a slide stack to
+advance to the next card in the stack.
+
+Press the `\textbf{,}' (comma) key whilst the mouse is over a slide stack to
+return to the previous card in the stack.
+
+Press the \textbf{A} key to toggle align-to-grid mode for slides and images.
+
+Press the \textbf{E} key to switch between two examine modes.
+This changes what happens when you hover the mouse pointer over a slide
+at zoom level 2. The default mode shows the slide title at the
+top of the screen; the alternate mode shows a small version of
+the entire slide at the bottom-right of the screen.
+
+Press the \textbf{G} key to toggle slide gravity.
+
+Press the \textbf{M} key to switch on an on-screen display of Multitalk's
+current memory usage.
+
+Press the \textbf{P} key to toggle a highly visible mouse pointer
+(a giant arrow which points in from the edge of the screen).
+This can be used as an alternative to a laser pointer.
+
+Press the \textbf{R} key to ask Multitalk to re-read the current `.talk' file.
+This is useful when you are simultaneously editing the file and
+viewing the results in window mode on a large display.
+Note: it is only necessary to do this manually if you have started
+Multitalk with the \verb^-nowatch^ command line argument; otherwise
+Multitalk checks the file for changes automatically twice a second.
+
+Press the \textbf{Backspace} key to ``pin'' a slide to the top-right corner of
+the screen. At zoom levels 1 or 2 the
+slide under the mouse pointer will be pinned, whereas at zoom level 0
+the slide at the centre of the screen (if any) is pinned. If there
+is already a pinned slide, pressing \textbf{Backspace} again unpins it.
+Pinned slides are reduced to 50\% in size and made slightly transparent;
+they are frozen so you cannot manipulate features such as folding
+sections, hyperlinks or stack rotation within them.
+Be aware that due to the reduction in scale, pinned slides are
+difficult for your audience to read!
+
+Press the \textbf{/} (forward slash) key for the maximise (single
+or dual slide view) mode. This operates on the slide at the
+centre of the screen, or under the mouse pointer if you are at
+zoom levels 1 or 2.
+The chosen slide is maximised so that
+it fills as much of the screen as possible (without distorting
+its aspect ratio). This will generally enlarge the slide, although
+it can also be used to reduce a slide to fit the screen, if it is too
+big (of course, it is not good practice to design slides larger
+than the screen, but this might happen if you are importing a big
+diagram, or if unfolded sections make a slide overflow).
+The maximised view is static: you cannot scroll around when maximised
+nor activate slide features such as hyperlinks, folding sections
+or stack rotation.
+To exit maximised view, press any key or mouse button.
+
+If the maximise key is pressed whilst a slide is pinned, it enters
+dual slide view. In this case both the
+chosen slide and the pinned slide are shown side by side (and no
+others). This is intended for situations where you need to compare
+two slides from possibly distant parts of the talk. Dual slide view
+is a static display, like single slide view.
+The program decides intelligently whether to split the screen
+horizontally or vertically, and what proportion of the space to
+allocate to each slide, so that they are as large as possible and
+displayed at the same zoom factor.
+Note that you cannot compare two different cards from the same stack
+with dual slide view, because the current card from each slide is
+always shown.
+
+Press \textbf{Escape} to quit.
+
+\section{Markup language}
+
+\begin{bulletlist}
+\item The order in which you define slides has no significance
+  (you are going to move them around in 2D with Multitalk anyway)
+\item Whitespace is taken literally (including newlines)
+\item Lines are not wrapped for you
+\item Tabs expand to three spaces
+\end{bulletlist}
+
+\subsection*{Whole line instructions}
+
+\begin{tabular}{llp{11cm}}
+\verb^@ Slide Title^ & -- & introduces a new slide (ending the previous one)
+	and specifies its title\\
+\verb^@!path/to/image.png^ & -- & create an ``image slide'', the entire
+	contents of which will be the image you specify (no title bar or text
+	body). Any content lines are ignored until the next \verb^@^ line.\\
+\verb^!path/to/image.png^ & -- & display an image within the current slide.
+	This kind of image cannot be dragged out of the slide's area.\\
+\verb^[^             & -- & start of folding section\\
+\verb^]^             & -- & end of folding section\\
+\verb^:Slide Title^  & -- & turns the \textit{previous line} into a hyperlink,
+	the target of which is the named slide. If the previous line displays
+	an image, the image becomes the hyperlink, instead of the most recent
+	line of text\\
+\verb^:Slide Title.n^  & -- & a hyperlink as above, which also switches to
+	card number \verb^n^ within the target stack\\
+\verb^!Style^        & -- & sets the current slide's style (may be omitted for defaults)\\
+\verb^!n^   & -- & indicates start of a block to appear only on card number n (1-9)\\
+\verb^!pqr^ & -- & start of a block to appear on cards p, q, r, etc (two or more)\\
+\verb^!!^   & -- & switch back to displaying the same thing on all cards\\
+\verb^\^    & -- & beginning or end of LaTeX section\\
+\verb^\)^   & -- & beginning of centred LaTeX section\\
+\verb^%space n^      & -- & vertical space of n pixels\\
+\verb^--^   & -- & horizontal rule\\
+\verb^@canvascolour=colour^ & -- & sets global canvas colour
+	(the area not covered by any slides)\\
+\verb^@designsize=^\textit{width}\verb^x^\textit{height} & -- & the resolution this presentation has
+	been designed to be displayed at\\
+\end{tabular}
+
+\subsection*{Beginning of line instructions}
+
+\begin{tabular}{llp{12cm}}
+\verb^* line text^   & -- & bullet point\\
+\verb^** line text^  & -- & second level bullet point\\
+\verb^*** line text^ & -- & third level bullet point\\
+\verb/^ line text/   & -- & indent this line the same distance as the
+	previous one (useful for continuing a bullet point onto another line
+	without another bullet)\\
+\verb^)line text^    & -- & centre line\\
+\verb^# line text^   & -- & comment line\\
+\verb^> line text^   & -- & heading line\\
+\verb^>) line text^   & -- & heading line (centred)\\
+\end{tabular}
+
+\subsection*{Anywhere in text}
+
+\begin{tabular}{llp{13cm}}
+\verb^$foo bar$^  & -- & fixed width font (the string may span multiple lines)\\
+\verb^*foo bar*^  & -- & bold\\
+\verb^/foo bar/^  & -- & italic\\
+\verb^%colour.^	& -- & change text colour\\
+\verb^%.^			& -- & revert to the default text colour\\
+\verb^\X^			& -- & a literal escape (particularly useful X's are
+	\verb^*, /, $, \, %,^ and less commonly \verb$@, !, ), ^, :, [, ]$)\\
+\end{tabular}
+
+\section{Slide stacks}
+
+Slide stacks allow you to step through a sequence of changes
+(new bullet points appearing, graphs animating etc) within a slide.
+These are shown visually as a small deck of cards on the canvas.
+Click in the slide titlebar to advance to the next card in the stack,
+or press comma/period with the mouse over the slide to go back/forward.
+In your \verb=.talk= file you introduce a section of the slide to appear only
+on certain cards in the stack with one of the following types of line:
+
+\begin{verbatim}
+!n   - indicates start of a block to appear only on card number n (1-9)
+!pqr - start of a block to appear on cards p, q, r, etc (may be any number)
+!!   - switch back to displaying the same thing on all cards
+\end{verbatim}
+
+Each of these directives applies to all subsequent lines until you
+specify otherwise or until the end of the current slide.
+Card 1 is the initial card. You may refer to cards upto number 9.
+The stack height will be the same as the maximum card number used.
+Blocks are \textit{not} stretched to fill the same space -- you must pad with
+blank lines if sections on different cards are of non-equal height and
+you want to line up repeated content lower down the slide.
+
+\section{Styles}
+
+Styles are described by files in \verb=styles/= directories. For example, a
+file called \verb=styles/Foo.style= specifies the style named \verb=Foo=. By
+convention styles start with a capital letter.
+
+Each style file is in the format of a sequence of name-value pairs; one per
+line. A list of all possible style file properties follows. Defaults are in
+square brackets (you only have to specify the properties you want to override).
+
+Generally there are no restrictions on any of the values (except that colour
+properties have to be a valid colour name, and boolean properties must be
+\verb=yes= or \verb=no= etc).
+This means that strange things could happen if you pick
+out-of-bounds combinations; for example you could specify a fold icon which is
+wider than the fold margin it is supposed to fit in. If this occurs it should
+be obvious visually and you can simply choose some more appropriate values.
+
+The approach taken is to give you the power to change almost everything -- good
+taste and spacing considerations are up to you.
+
+If you create a style called \verb=Default.style=, the settings you override
+with it will be used for any slides with no style, instead of the
+hard-coded defaults.
+
+\begin{verbatim}
+textcolour=colour  [black]
+bgcolour=colour    [white]
+titlecolour=colour [black] (titlebar text)
+barcolour=colour   [yellow] (set to bgcolour if you want it indistinguishable)
+linkcolour=colour  [purple]
+
+bullet1colour=colour [yellow]
+bullet2colour=colour [cyan]
+bullet3colour=colour [blue]
+bullet1size=n [9] (specifies radius; shape is always circular)
+bullet2size=n [7] (specifies radius; shape is always circular)
+bullet3size=n [6] (always an ellipse, the lesser radius is two-thirds of n)
+bullet1icon=path/to/picture.png [built-in circle]
+bullet2icon=path/to/picture.png [built-in circle]
+bullet3icon=path/to/picture.png [built-in ellipse]
+
+foldcollapsedcolour=colour [green] (fixed shape)
+foldexpandedcolour=colour [yellow] (fixed shape)
+foldexposed1colour=colour [sky] (set to bgcolour if you want it invisible)
+foldexposed2colour=colour [grey] (set to bgcolour if you want it invisible)
+foldexposed3colour=colour [black] (set to bgcolour if you want it invisible)
+foldcollapsedicon=path/to/picture.png [built-in]
+foldexpandedicon=path/to/picture.png [built-in]
+
+highlightcolour=colour [red] (applies to links and fold icons when clicked on)
+
+bgimage=path/to/picture.png   [none] (this is always scaled to fit)
+bgtexture=path/to/picture.png [none] (this is always tiled / cropped to fit)
+
+bgbar=yes|no [yes] (bgimage / bgtexture also cover slide's title bar)
+enablebar=yes|no [yes] (the slide title bar itself)
+underlinelinks=yes|no [yes]
+
+logo=x,y,path/to/picture.png [none] (you can repeat this for multiple logos)
+  (x and y may be negative for placement relative to the right/bottom edges)
+
+titlefont=font  [luxi/luxisb.ttf]
+textfont=font   [luxi/luxisr.ttf]
+fixedfont=font  [luxi/luximr.ttf]
+boldfont=font   [luxi/luxisb.ttf]
+italicfont=font [luxi/luxisri.ttf]
+
+titlesize=n [40]
+textsize=n  [36] (the size for plain text, bold and italic)
+fixedsize=n [26]
+
+linespacing=n  [42]
+titlespacing=n [70]
+
+bordercolour=colour [black]
+pictureborder=n [1] (border width; 0 = off)
+slideborder=n   [1] (border width; 0 = off)
+barborder=n     [1] (this is the dividing line between the titlebar and
+                     the main slide; 0 = off)
+
+picturemargin=n [15]
+topmargin=n     [0]
+bottommargin=n  [20]
+leftmargin=n    [15]
+foldmargin=n    [30]
+rightmargin=n   [30]
+
+latexwidth=n [550]
+latexscale=n [300]
+latexbaselinestretch=n [85]
+latexinclude=path/to/file.tex [none]
+latexpreinclude=path/to/file.tex [none]
+latexspaceabove=n [5]
+latexspacebelow=n [0]
+
+rulecolour=colour [black]
+ruleheight=n [2]
+rulewidth=percent [85]
+rulespaceabove=n [10]
+rulespacebelow=n [5]
+
+headspaceabove=n [5]
+headspacebelow=n [10]
+
+# comment line in style files
+\end{verbatim}
+
+\section{Configuration files}
+
+Multitalk searches for a configuration file in the following three
+locations:
+\begin{bulletlist}
+\item \verb^/etc/multitalk.conf^
+\item \verb^$MULTITALK_DIR/multitalk.conf^
+\item \verb^~/.multitalk/multitalk.conf^
+\end{bulletlist}
+
+It will read any that exist. If an option is specified in more than
+one file the locations further down the list take precedence.
+
+There are currently only three config file options, and they are all
+used to specify the location of the executables needed for the embedded
+latex feature. This is useful if they cannot be found along the default
+path. The options are:
+
+\begin{verbatim}
+latexcmd=path/to/latex     ["latex"]
+dvipscmd=path/to/dvips     ["dvips"]
+convertcmd=path/to/convert ["convert"]
+\end{verbatim}
+
+\section{File locations}
+
+The Multitalk binary may be installed in any directory.
+It locates its resources as follows.
+
+When you invoke Multitalk you may supply a relative or absolute
+pathname to the \verb=.talk= file. The directory containing
+the \verb^.talk^ file is known as the \textit{project-directory}.
+This is not necessarily the same as the current directory.
+
+Multitalk searches for fonts in the following locations, in order
+(stopping when it finds them):
+\begin{numericlist}
+\item \textit{project-directory}\verb^/fonts/^
+\item \verb^~/.multitalk/fonts/^
+\item \verb^$MULTITALK_DIR/fonts/^
+\item \verb^/usr/local/share/multitalk/fonts/^
+\end{numericlist}
+It is not an error if any of those don't exist, or if the
+\verb^MULTITALK_DIR^ environment variable hasn't been defined.
+
+Multitalk looks for styles in all of these places:
+\begin{numericlist}
+\item \textit{project-directory}\verb^/styles/^
+\item \verb^~/.multitalk/styles/^
+\item \verb^$MULTITALK_DIR/styles/^
+\item \verb^/usr/local/share/multitalk/styles/^
+\end{numericlist}
+If the same style appears in more than one of these directories, they
+are \textbf{all} applied but settings from directories higher up this list
+override those specified in the lower ones.
+
+Files referred to in style files (e.g. the \verb=latexinclude= and
+\verb=latexpreinclude= properties) are searched for in the same four
+locations.
+
+Images with absolute file names (starting with a \verb=/=) are looked up in
+the usual way. If an image file name starts with \verb^~/^ or
+\verb^~username/^ the tilde is expanded to the relevant user's home
+directory.
+
+Images with relative path names are searched for in the
+following locations, in order (stopping once found):
+\begin{numericlist}
+\item \textit{project-directory}\verb^/^
+\item \verb^~/.multitalk/gfx/^
+\item \verb^$MULTITALK/gfx/^
+\item \verb^/usr/local/share/multitalk/gfx/^
+\end{numericlist}
+
+\section{Screen size}
+
+Multitalk's default display size is 1024x768 pixels, which currently
+suits most video projectors well. If you need to change this, there
+are two related sets of parameters you can adjust. Firstly, when invoking
+Multitalk you may specify the following command-line option:
+
+\verb^-displaysize=x,y^
+
+Secondly, the .talk file may include the following directive:
+
+\verb^@designsize=x,y^
+
+The reason for this is that most talks are designed with a particular
+screen size in mind, and will not appear correctly at a different
+resolution (for example, some slides might not fit on the screen,
+or unrelated parts of a talk might be visible). By including
+\verb^designsize^ in your talk other users can see the intended
+resolution. The \verb^displaysize^ option should instead be set to
+the native resolution of the display viewing the talk. Both are
+optional.
+
+For example, if you are editing a presentation on a widescreen
+laptop, but will be giving your talk using a 4:3 projector,
+you might set \verb^designsize^ to 1024x768 and \verb^displaysize^
+on the laptop to something like 1366x768 or 1024x600.
+
+If \verb^displaysize^ and \verb^designsize^ differ, but have the
+same aspect ratio, Multitalk opens its window or screen to
+\verb^displaysize^, renders the talk normally, and then scales
+it in the ratio \verb^displaysize^ : \verb^designsize^ so that it
+fits the display. In this way the user sees exactly the same area
+of the talk as they would at its original resolution.
+
+Note that if Multitalk has to scale its output, the visual quality
+will degrade (the algorithm used emphasises speed over quality);
+also you will not gain any extra detail by scaling up to a larger size.
+
+If \verb^displaysize^ and \verb^designsize^ differ and have a
+different aspect ratio, Multitalk tries to keep the aspect ratio
+of the slides unchanged, by picking the largest size of the
+correct (design) aspect ratio which will fit on the display.
+In windowed mode, it may therefore open a window which is smaller
+than the specified \verb^displaysize^.
+
+In fullscreen mode, Multitalk
+relies on SDL's ability to centre and clip the output on the screen if
+the requested resolution is not available. Typically, if the display
+is wider than the design, you will see black bars to the left and
+the right of the screen; if the display is taller than the design
+there will be black bars at the top and the bottom of the screen.
+
+Note that this will not always work if the display hardware is prepared
+to actually sync to a non-native aspect ratio mode using hardware
+scaling (rather than offering the next largest native mode). In this
+case the aspect ratio will still be wrong, and quality will be
+terrible due to the combination of both software and hardware scaling.
+If this happens you may be forced to alter the talk's \verb^designsize^
+and accept a different resolution.
+
+\section{Images}
+
+PNG, GIF and JPEG are supported.
+
+You can have multiple images within each slide and transparency is supported,
+so they do not have to be rectangular.
+
+There are a few photos, diagrams, icons, logos, clipart and textures in the
+\verb=gfx/= directory which are used by the examples. These are all freely
+distributable, and are mostly taken from the open clipart project and eden
+nature photos.
+
+\section{Colours}
+
+These 17 colour names are used in \verb^%^ directives within a talk and in
+style files. They are all case-insensitive.
+
+\begin{tabular}{llll}
+\verb^White^       & \verb^Brown^    & \verb^Pink^      & \verb^LightGreen^\\
+\verb^LightGrey^   & \verb^Red^      & \verb^Magenta^   & \verb^Green^\\
+\verb^Grey^        & \verb^Orange^   & \verb^Purple^    & \verb^Cyan^\\
+\verb^DarkGrey^    & \verb^Yellow^   &                  & \verb^Blue^\\
+\verb^Black^       &                 &                  & \verb^Sky^\\
+\end{tabular}
+
+Colours can also be specified as a hash sign followed by 6
+hexadecimal digits, e.g. \verb^#FFFF00^ for yellow. This works
+both in \verb^%^ directives and style files.
+
+\section{Fonts}
+
+Multitalk ships with a range of freely-redistributable fonts in the fonts
+directory, so that you can start using it ``out of the box''. You can also copy
+your own Truetype fonts into this directory and use those as well.
+
+Microsoft's free web fonts work particularly well, sadly due to license
+restrictions we cannot include them in this package as \verb=.ttf= files
+(they can
+only be shipped in an archive format). You can however download the web fonts
+for yourself from one of the various sites which redistribute them, and extract
+them into the \verb=fonts/webfonts= directory.
+The \verb=WebFonts.style= file shows how to
+use them; uncomment the appropriate lines in this file to match the fonts. You
+should make sure you end up with at least the files \verb=arial.ttf=,
+\verb=arialbd.ttf=, \verb=ariali.ttf=, \verb=cour.ttf=, \verb=times.ttf=,
+\verb=timesbd.ttf= and \verb=timesi.ttf=.
+
+\section{Latex sections}
+
+The use of latex syntax requires three external programs to be installed on
+your machine: \verb=latex=, \verb=dvips= and \verb=convert=
+(the latter is part of ImageMagick).
+If these are not in your path you can specify their location using
+the config file options \verb=latexcmd=, \verb=dvipscmd= and \verb=convertcmd=.
+
+There can be any number of latex sections per slide and per talk. Each
+one is processed independently by latex. Multitalk saves the output as
+PNG files automatically in a directory called \verb=foo.latex/= (where your
+talk file is \verb=foo.talk=). The PNG files have numeric names generated from
+the latex source text. Next time you start Multitalk it won't run latex
+again if the PNG output has already been generated, which improves
+start-up time considerably and isolates you from the possibility of
+something going wrong with latex on your presentation machine.
+
+Incidentally, the \verb=.latex= directories are never cleaned up, so if you
+make a lot of edits to your latex sections you may wish to delete the
+PNG files within from time to time to save disk space (Multitalk will
+regenerate the ones currently required when you run it). Otherwise
+there is no need to pay any attention to the .latex directory.
+
+A latex section may span multiple lines but it is not possible to
+insert latex as a fraction of an ordinary line (i.e. a line break is
+forced before and after each latex section). You can choose
+left-aligned or centred latex and control the latex page width for word
+wrap. The slide sizes in order to fit its latex contents as expected.
+
+LaTeX sections begin and end with a line containing a single backslash,
+like this:
+\begin{verbatim}
+\
+Some latex $e=mc^2$
+\
+\end{verbatim}
+
+If you want a LaTeX section to be centred then start it with a line
+consisting of \verb^\)^ instead of \verb^\^, like this:
+\begin{verbatim}
+\)
+Centred \fbox{latex}
+\
+\end{verbatim}
+
+The main style file properties which relate to LaTeX sections are
+\verb=latexwidth= and \verb=latexscale=. The latexwidth property specifies the
+maximum width of the LaTeX page in screen pixels. The default is 550.
+The latexscale property is a magnification factor which you can
+use to match the LaTeX font size to that of your ordinary slide text.
+Note that the default for this is 300.
+
+The latex source text you include between the backslash lines should
+not have a latex header or any \verb^\begin{document}^ or
+\verb^\end{document}^,
+because these are wrapped around the fragment for you by Multitalk. If
+you need to change the document header you can set the
+\verb=latexpreinclude= style property to the name of a file containing the
+lines you wish to add. This file is inserted to all latex documents
+just after the \verb^\usepackage^ lines in the header, so is a good place to
+include any additional \verb^\usepackage^ declarations you need.
+
+The \verb=latexinclude= style property is similar but the file specified
+is included after the \verb=\begin= \verb={document}= line, immediately before
+your source text fragment. This is a handy place to put latex body
+commands which you need in all your latex segments, such as a change
+of font, to avoid typing them repeatedly.
+
+There is also a \verb=latexbaselinestretch= style property, which sets the
+\verb^\baselinestretch^ variable in latex, but is expressed as an integer
+percentage, so for example you write\\
+\verb^latexbaselinestretch=120^\\
+if you
+want a stretch factor of 1.2. The default is actually 85 (0.85). This
+is a convenience feature for quick matching of the latex and slide line
+spacing, since you could also insert the command manually using the
+\verb=latexinclude= property.
+
+\section{Hints}
+
+When you start Multitalk, the display will initially be centred on the
+first slide in your talk (it's therefore a good idea if that is the
+title slide).
+
+When you add new slides to your talk, they will initially appear below and
+slightly to the left of the location of the slide which preceeds them in the
+\verb=.talK= file. This minimises the chance that slides are buried underneath each
+other, even when you add multiple new slides at the same time. You will
+probably want to zoom out immediately and drag them to your desired locations
+with the mouse.
+
+Inside a block of fixed-width text (delimited by \verb^$^ signs)
+occurrences of \verb^*^ and
+\verb^/^ are taken literally. If you want some bold or italic text inside a
+fixed-width segment you therefore have to exit the block with \verb^$^ first.
+
+Warning: all slides are currently pre-rendered, hence if you have a lot of
+slides you need a lot of memory!
+
+\section{HTML export}
+
+The \verb^-export^ command-line option converts Multitalk presentations
+to HTML. This is primarily intended for uploading a copy to a
+website so that your audience may review the presentation after your
+talk. Another benefit is that you can give your talk from the
+HTML version as a last resort if you do not have a computer with
+Multitalk installed on it (obviously this is not as satisfactory
+as the real thing, since you cannot scroll around the web version
+the same way).
+
+When exporting \verb^foo.talk^, Multitalk will create a collection of
+webpages in a sub-directory called \verb^foo.html^.
+There is one page for each slide. Each page has a small navigation
+image at the top (similar to the radar window in Multitalk), and the
+slide image below.
+The navigation image is an imagemap, so you can click on a slide's
+outline there to load the appropriate page.
+A cross on the navigation display marks the slide currently shown.
+
+A title page called \verb^index.html^ is also generated, which shows one
+large navigation image covering the whole talk.
+The \verb^.talk^ filename and the title of the first slide are used as
+a heading for the title page.
+Clicking on the background of any navigation image (the area not
+covered by any slide) always returns to the title page.
+
+Hyperlinks (text and image) work as you would expect.
+Card stacks are also implemented; these are rotated by clicking on
+special links which appear between the navigation image and the
+slide image if there is more than one card.
+Folding sections are supported in a limited way; specifically two versions
+of each slide are generated, one with all folding sections collapsed
+and one with them all expanded. Clicking on any folding line switches
+to the other representation, but it is not possible to selectively
+expand certain sections on a given slide. This is because there could
+be an exponential number of combinations, which would be wasteful
+of disk space to store.
+
+\section{What about handouts?}
+
+It is not currently possible to automatically generate handouts from a
+Multitalk presentation. This is partly due to the way it treats a talk
+as an interactive experience, which is more effective because it is
+less closely related to a paper document. It is more natural to record
+a Multitalk presentation than to print it...
+
+\section{Disclaimer}
+
+Your attention is directed to the ``No Warranty'' section of the software
+license. If Multitalk crashes during your presentation to a room full
+of VIP's the author is not responsible!
+
+That said, if you find a bug in Multitalk, please report it so it can
+be fixed! Make sure you test your presentation thoroughly when you rehearse
+it. I also recommend making use of the HTML export feature described
+above, and keeping your presentation in both Multitalk and HTML
+formats on a USB memory stick. This will allow you to show the
+presentation in emergencies on any computer with a web browser,
+even if it does not have Multitalk or an Internet connection.
+
+\section{Contact}
+
+Bug reports, feature requests and general feedback can be sent to:
+\verb^dmi1000@cam.ac.uk^
+
+\end{document}

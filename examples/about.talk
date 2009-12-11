@@ -1,0 +1,212 @@
+### MULTITALK ###
+#
+@ Multitalk V1.3
+!RedBar
+)%blue.Presentation Tool Demo%.
+
+)Hold mouse button and drag to
+)the right to see the next slide!
+
+--
+
+)%purple.Dr David Ingram%.
+)$dmi1000@cam.ac.uk$
+
+@ About Multitalk
+!BlueBar
+* Other presentation packages are mostly
+^ %brown.Powerpoint clones%.
+* %#AA4444.Can we do better?%.
+> Problems with Powerpoint
+* Lack of involvement of speaker
+* Reuse and maintainance of material
+* Little flexibility in response to audience
+* Difficult to show position in talk
+Solution: linearise /in talk/, not before
+
+@ Multitalk design concepts
+!BlueBar
+* Markup language based
+** Prosper already does this
+** Use WYSIWYG image placement though
+!clipart/Lamp.png
+* 2D rather than 1D
+:Navigation in 2D
+* Folding text
+[
+Such as these
+two lines...
+]
+
+@!clipart/Seagull.png
+#!Picture
+
+@ Navigation in 2D
+!BlueBar
+* Scroll with mouse
+* Each slide is the size it needs to be
+* Merge and reuse other talks
+* Zoom
+** Zoom out, reposition, zoom in on new material
+** Good for laying out talks when editing
+* Central concepts can be shown centrally
+^ Avoids need for "where are we?" slides
+* Hyperlinks
+:Example slide source
+!clipart/Boat.png
+
+@ Multitalk design concepts II
+!Demo
+* Markup language based
+** Prosper already does this
+** Use WYSIWYG image placement though
+* 2D rather than 1D
+:Navigation in 2D
+* Folding text
+[
+Such as these
+two lines...
+]
+
+@ Multitalk design concepts III
+!Extreme
+* Markup language based
+** Prosper already does this
+** Use WYSIWYG image placement though
+* 2D rather than 1D
+:Navigation in 2D
+* Folding text
+[
+Such as these
+two lines...
+]
+
+@ Folding text
+!BlueBar
+Works like a folding text editor
+Different from Powerpoint's fly-on points
+[
+* Optional expansion supports targetted presentations
+* Expand any number at once, or collapse back
+* Allows inclusion of long code or XML fragments
+]
+
+@ Slide stacks
+!BlueBar
+* Click in titlebar to advance
+!23
+* Or use the < and > keys
+!1
+!charts/games1.gif
+
+
+!2
+!charts/games2.gif
+
+!3
+!charts/games3.gif
+* Card stack provides visual feedback
+!!
+
+Example
+chart:
+
+@ Potential problems
+!BlueBar
+!clipart/PirateFlag.png
+* Lots of mousing uncomfortable
+[
+** Gravity torwards centre of slide
+** Ideally use wireless mouse on a pedestal
+]
+* Get lost in talk
+[
+** Zoom out feature
+]
+* Miss essential parts out
+[
+** Slide viewed icons? (not done yet)
+]
+However, speaker involvement is guaranteed
+Features added as required
+
+@ Slide styles
+!RedBar
+* Why use the same template for every slide?
+[
+** Background graphic adds nothing to the talk
+** Visually highlight different topics
+** Essential for merging talks
+]
+
+@ Style attributes
+!RedBar
+Colours
+[
+	Titlebar colour
+	Normal text colour
+	Background colour
+	Hyperlink colour
+	Title colour
+	Bullet points (3 levels)
+	Border colour
+	Fold icon colour (collapsed and expanded)
+	Exposure bar colours (3 levels)
+]
+Sizes
+[
+	Bullet point sizes (3 levels)
+	Line spacing
+	Titlebar height
+]
+Margins
+[
+	Top, Bottom, Left, Right
+	Fold icon margin
+	Picture margin
+]
+Options
+[
+	Underlined hyperlinks
+	Titlebar presence
+]
+Border styles
+[
+	Slide border
+	Titlebar border
+	Picture border
+]
+Fonts
+[
+	Titlebar font and size
+	Main text font and size
+	Bold text font
+	Italic text font
+	Fixed-width font and size
+]
+Graphics
+[
+	Bullet point icons (3 levels)
+	Fold icons (collapsed and expanded)
+	Background image (tiled or scaled)
+	Logos (any number of images, with x, y)
+]
+
+@ Digressions
+!GreenBar
+Clearly shown as going in
+a different direction...!
+
+@!photos/cave_crop.jpg
+
+@ Example slide source
+!BlueBar
+$ @ Folding text
+ !BlueBar
+ Works like a folding text editor
+ Different from Powerpoint's fly-on points
+ [$
+$ * Optional expansion supports targetted presentations$
+$ * Expand any number at once, or collapse back$
+$ * Allows inclusion of long code or XML fragments
+ ]$
