@@ -1436,6 +1436,12 @@ int mainloop()
 						if(gravity)
 							recentre(&prefx, &prefy);
 						break;
+					case SDLK_HOME:
+						warp_to_slide(talk->item(0));
+						fix_position(&prefx, &prefy);
+						scrollreqx = scrollreqy = 0;
+						refreshreq = 1;
+						break;
 					case SDLK_j:
 						{
 							slide * sl = slide_under_pointer();
