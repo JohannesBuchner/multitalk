@@ -34,7 +34,7 @@ slidevector *render_list;
 stylevector *style_list;
 
 SDL_Surface *screen;
-TTF_Font *osd_font;
+TTF_Font *osd_font, *help_font;
 int viewx, viewy, zoom_level;
 int refreshreq = 0;
 int extra_button[3];
@@ -42,6 +42,7 @@ int extra_button[3];
 int fullscreen;
 int slides_moved = 0;
 int memory_display = 0;
+int help_display = 0;
 int radar_window = 0;
 int watch_file = 1;
 int gravity = 1;
@@ -276,6 +277,7 @@ void init_gui(const char *caption, int offscreen)
 	init_sdl(caption, offscreen);
 	
 	osd_font = init_font(config, OSD_FONT_FILE, OSD_FONT_SIZE);
+	help_font = init_font(config, OSD_FONT_FILE, OSD_FONT_SIZE / 2);
 	init_colours();
 	canvas_colour = colour->names->find("grey");
 	viewx = UNKNOWN_POS;
@@ -689,6 +691,32 @@ void osd()
 		TTF_SizeUTF8(osd_font, textstr, &w, &h);
 		render_text(textstr, osd_font, &colour->red_text, screen,
 				SCREEN_WIDTH - 15 - w, SCREEN_HEIGHT - 5 - h);
+	}
+	if(help_display)
+	{
+		const char helpstr[12][40] = {
+			"TAB ... fullscreen mode",
+			"Return ... go back to last hyperlink",
+			". ... advance in stack",
+			", ... previous in stack",
+			"A ... align-to-grid mode",
+			"E ... examine modes",
+			"N ... navigation radar",
+			"P ... giant arrow",
+			"R ... re-read file",
+			"Backspace ... pin a slide",
+			"Insert ... single slide view",
+			"Escape ... quit"
+		};
+		int w, h;
+		int i;
+		int bottom = 5;
+		for (i = 0; i < 12; i++) {
+			TTF_SizeUTF8(help_font, helpstr[i], &w, &h);
+			render_text(helpstr[i], help_font, &colour->red_text, screen,
+					10 /*SCREEN_WIDTH - 15 - w*/, SCREEN_HEIGHT - bottom - h);
+			bottom += h;
+		}
 	}
 	if(radar_window && zoom_level < 2)
 	{
@@ -1398,6 +1426,10 @@ int mainloop()
 						}
 						if(zoom_level == 2 && magnify != NULL)
 							refreshreq = 1;
+						break;
+					case SDLK_h:
+						help_display = 1 - help_display;
+						refreshreq = 1;
 						break;
 					case SDLK_g:
 						gravity = 1 - gravity;
