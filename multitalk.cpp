@@ -381,7 +381,7 @@ void warp_to(int x, int y)
 	}
 	// Flush events:
 	SDL_Event event;
-	while(SDL_PollEvent(&event) != 0);
+	while(SDL_PollEvent(&event) != 0) ;
 	if(!pointer_on)
 		SDL_ShowCursor(SDL_ENABLE);
 	hide_pointer = 0;

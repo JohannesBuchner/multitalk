@@ -26,46 +26,47 @@ userinstall:
 
 SDL_CFLAGS=`sdl-config --cflags`
 SDL_LIB=`sdl-config --libs`
+CCFLAGS=-Wall -Wextra -ansi -pedantic
 
 multitalk: multitalk.o datatype.o sdltools.o parse.o graph.o style.o \
 files.o render.o latex.o web.o config.o multitalk.h
-	g++ -Wall -o multitalk multitalk.o datatype.o sdltools.o parse.o graph.o \
+	g++ ${CCFLAGS} -o multitalk multitalk.o datatype.o sdltools.o parse.o graph.o \
 	style.o files.o render.o latex.o web.o config.o -L${HOME}/lib -lSDL_image \
 	-lSDL_ttf \
 	${SDL_LIB} -lSDL_gfx
 
 multitalk.o : multitalk.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} multitalk.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} multitalk.cpp
 
 sdltools.o : sdltools.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} sdltools.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} sdltools.cpp
 
 render.o : render.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} render.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} render.cpp
 
 latex.o : latex.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} latex.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} latex.cpp
 
 web.o : web.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} web.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} web.cpp
 
 config.o : config.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} config.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} config.cpp
 
 datatype.o : datatype.cpp datatype.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} datatype.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} datatype.cpp
 
 graph.o : graph.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} graph.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} graph.cpp
 
 style.o : style.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} style.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} style.cpp
 
 files.o : files.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} files.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} files.cpp
 
 parse.o : parse.cpp multitalk.h
-	g++ -Wall -I${HOME}/include -c ${SDL_CFLAGS} parse.cpp
+	g++ ${CCFLAGS} -I${HOME}/include -c ${SDL_CFLAGS} parse.cpp
 
 clean:
 	rm -f multitalk *.o
