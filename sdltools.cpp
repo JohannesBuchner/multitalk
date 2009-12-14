@@ -289,19 +289,19 @@ colour_definition::colour_definition()
 	
 	white_pen = (0xFF << 24) + (0xFF << 16) + (0xFF << 8) + 255;
 	black_pen = (0x00 << 24) + (0x00 << 16) + (0x00 << 8) + 255;
-	red_pen = (0xFF << 24) + (0x00 << 16) + (0x00 << 8) + 255;
-	orange_pen = (0xFF << 24) + (0x88 << 16) + (0x00 << 8) + 255;
+	red_pen = (0xFF << 24) + (0x6d << 16) + (0x66 << 8) + 255;
+	orange_pen = (0xFF << 24) + (0xa0 << 16) + (0x00 << 8) + 255;
 	yellow_pen = (0xFF << 24) + (0xFF << 16) + (0x00 << 8) + 255;
-	green_pen = (0x00 << 24) + (0xBB << 16) + (0x00 << 8) + 255;
-	light_green_pen = (0x66 << 24) + (0xFF << 16) + (0x66 << 8) + 255;
-	sky_pen = (0x44 << 24) + (0x88 << 16) + (0xFF << 8) + 255;
+	green_pen = (0x28 << 24) + (0x94 << 16) + (0x07 << 8) + 255;
+	light_green_pen = (0xb8 << 24) + (0xF6 << 16) + (0x36 << 8) + 255;
+	sky_pen = (0x5c << 24) + (0xFF << 16) + (0xF4 << 8) + 255;
 	cyan_pen = (0x00 << 24) + (0xFF << 16) + (0xFF << 8) + 255;
-	blue_pen = (0x00 << 24) + (0x00 << 16) + (0xFF << 8) + 255;
+	blue_pen = (0x07 << 24) + (0x28 << 16) + (0x94 << 8) + 255;
 	grey_pen = (0x88 << 24) + (0x88 << 16) + (0x88 << 8) + 255;
 	dark_grey_pen = (0x44 << 24) + (0x44 << 16) + (0x44 << 8) + 255;
 	light_grey_pen = (0xC4 << 24) + (0xC4 << 16) + (0xC4 << 8) + 255;
 	brown_pen = (0x88 << 24) + (0x00 << 16) + (0x00 << 8) + 255;
-	purple_pen = (0x88 << 24) + (0x00 << 16) + (0xAA << 8) + 255;
+	purple_pen = (0x8a << 24) + (0x46 << 16) + (0xc8 << 8) + 255;
 	pink_pen = (0xFF << 24) + (0x99 << 16) + (0x99 << 8) + 255;
 	magenta_pen = (0xFF << 24) + (0x00 << 16) + (0xFF << 8) + 255;
 
