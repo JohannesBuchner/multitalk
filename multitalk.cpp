@@ -1448,7 +1448,7 @@ int mainloop()
 							if(sl != NULL)
 							{
 								int i = talk->find(sl);
-								if (i > 1) {
+								if (i > 0) {
 									warp_to_slide(talk->item(i - 1));
 									fix_position(&prefx, &prefy);
 									scrollreqx = scrollreqy = 0;
