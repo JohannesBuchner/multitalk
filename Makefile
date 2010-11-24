@@ -26,7 +26,7 @@ userinstall:
 
 SDL_CFLAGS=`sdl-config --cflags`
 SDL_LIB=`sdl-config --libs`
-CCFLAGS=-Wall -Wextra -ansi -pedantic
+CCFLAGS=-Wall -ansi -Wextra -pedantic -O3
 
 multitalk: multitalk.o datatype.o sdltools.o parse.o graph.o style.o \
 files.o render.o latex.o web.o config.o multitalk.h

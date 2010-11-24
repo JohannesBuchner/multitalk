@@ -407,6 +407,7 @@ void style::init_fonts(style *inherit)
 	if(inherit == NULL)
 	{
 		title_font = init_font(config, TITLE_FONT_FILE, TITLE_FONT_SIZE);
+		heading_font = init_font(config, TITLE_FONT_FILE, (TITLE_FONT_SIZE + TEXT_FONT_SIZE) / 2);
 		text_font = init_font(config, TEXT_FONT_FILE, TEXT_FONT_SIZE);
 		fixed_font = init_font(config, FIXED_FONT_FILE, FIXED_FONT_SIZE);
 		bold_font = init_font(config, BOLD_FONT_FILE, TEXT_FONT_SIZE);
@@ -415,6 +416,7 @@ void style::init_fonts(style *inherit)
 	else
 	{
 		title_font = inherit->title_font;
+		heading_font = inherit->heading_font;
 		text_font = inherit->text_font;
 		fixed_font = inherit->fixed_font;
 		bold_font = inherit->bold_font;
@@ -446,6 +448,7 @@ void style::update(dictionary *d)
 	set_colour_property(d, "bgcolour", &bgcolour);
 	set_colour_property(d, "linkcolour", &linkcolour);
 	set_colour_property(d, "titlecolour", &titlecolour);
+	set_colour_property(d, "headingcolour", &headingcolour);
 	
 	set_colour_property(d, "bullet1colour", &bullet1colour);
 	set_colour_property(d, "bullet2colour", &bullet2colour);
@@ -470,6 +473,8 @@ void style::update(dictionary *d)
 	set_ptsize_property(d, "textsize", &textsize, &text_font, textfont);
 	set_ptsize_property(d, "textsize", &textsize, &bold_font, boldfont);
 	set_ptsize_property(d, "textsize", &textsize, &italic_font, italicfont);
+	set_ptsize_property(d, "titlesize", &textsize, &heading_font, textfont);
+	set_ptsize_property(d, "textsize", &textsize, &heading_font, textfont);
 	set_ptsize_property(d, "fixedsize", &fixedsize, &fixed_font, fixedfont);
 	
 	set_integer_property(d, "linespacing", &linespacing);
@@ -489,6 +494,7 @@ void style::update(dictionary *d)
 	set_file_property(d, "latexpreinclude", &latexpreinclude);
 		
 	set_font_property(d, "titlefont", &titlefont, &title_font, titlesize);
+	set_font_property(d, "titlefont", &textfont, &heading_font, (titlesize + textsize) / 2);
 	set_font_property(d, "textfont", &textfont, &text_font, textsize);
 	set_font_property(d, "fixedfont", &fixedfont, &fixed_font, fixedsize);
 	set_font_property(d, "boldfont", &boldfont, &bold_font, textsize);
@@ -604,6 +610,7 @@ style::style(const char *s, style *inherit)
 	bgcolour = colour->names->find("white");
 	linkcolour = colour->names->find("purple");
 	titlecolour = colour->names->find("black");
+	headingcolour = colour->names->find("black");
 	bullet1colour = colour->names->find("yellow");
 	bullet2colour = colour->names->find("cyan");
 	bullet3colour = colour->names->find("blue");

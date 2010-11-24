@@ -312,6 +312,7 @@ class style
 	int bgcolour;
 	int linkcolour;
 	int titlecolour;
+	int headingcolour;
 	int bullet1colour;
 	int bullet2colour;
 	int bullet3colour;
@@ -370,7 +371,7 @@ class style
 	const char *boldfont;
 	const char *italicfont;
 	
-	TTF_Font *title_font, *text_font, *fixed_font, *bold_font, *italic_font;
+	TTF_Font *title_font, *heading_font, *text_font, *fixed_font, *bold_font, *italic_font;
 	int title_ascent, text_ascent, fixed_ascent, bold_ascent, italic_ascent;
 	int title_descent, text_descent, fixed_descent, bold_descent, italic_descent;
 	int text_space_width, fixed_space_width;

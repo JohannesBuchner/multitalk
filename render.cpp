@@ -113,8 +113,8 @@ void bigbullet(int x, int y, SDL_Surface *surface, style *st)
 	else
 	{
 		Uint32 pen = colour->pens->item(st->bullet1colour);
-		filledCircleColor(surface, x, y, st->bullet1size, pen);
-		aacircleColor(surface, x, y, st->bullet1size, colour->black_pen);
+		filledCircleColor(surface, x, y, st->bullet1size, colour->light_grey_pen);
+		filledCircleColor(surface, x, y, st->bullet1size - 1, pen);
 	}
 }
 
@@ -130,8 +130,8 @@ void mediumbullet(int x, int y, SDL_Surface *surface, style *st)
 	else
 	{
 		Uint32 pen = colour->pens->item(st->bullet2colour);
-		filledCircleColor(surface, x, y, st->bullet2size, pen);
-		aacircleColor(surface, x, y, st->bullet2size, colour->black_pen);	
+		filledCircleColor(surface, x, y, st->bullet2size, colour->light_grey_pen);
+		filledCircleColor(surface, x, y, st->bullet2size - 1, pen);
 	}
 }
 
@@ -148,9 +148,9 @@ void smallbullet(int x, int y, SDL_Surface *surface, style *st)
 	{
 		Uint32 pen = colour->pens->item(st->bullet3colour);
 		filledEllipseColor(surface, x, y, st->bullet3size,
-				(st->bullet3size * 2) / 3, pen);
-		aaellipseColor(surface, x, y, st->bullet3size,
-				(st->bullet3size * 2) / 3, colour->black_pen);
+				(st->bullet3size * 2) / 3, colour->light_grey_pen);
+		filledEllipseColor(surface, x, y, st->bullet3size - 1,
+				(st->bullet3size * 2) / 3 - 1, pen);
 	}
 }
 
@@ -268,7 +268,7 @@ int calc_height(slide *sl)
 	int height;
 	style *st = sl->st;
 	
-	height = 0;
+	height = st->linespacing / 2;
 	if(st->enablebar)
 		height += st->titlespacing;
 	for(int i = 0; i < repr->count(); i++)
@@ -651,8 +651,8 @@ void render_line(slide *sl, displayline *out, DrawMode *dm,
 		error("Impossible out->line in render.cpp");
 	else if(out->heading && strlen(out->line) > 0)
 	{
-		x = render_text(out->line, st->title_font,
-				dm->current_text_colour_index, surface,
+		x = render_text(out->line, st->heading_font,
+				st->headingcolour, surface,
 				x, out->y + st->headspaceabove, 0);
 	}
 	else if(strlen(out->line) > 0)
@@ -699,7 +699,7 @@ void render_line(slide *sl, displayline *out, DrawMode *dm,
 						link_text_colour_index, surface, x,
 						out->y + textshift,
 						out->link == NULL || !st->underlinelinks ? 0 :
-						st->linespacing);
+						st->textsize);
 			}
 			if(code == '$')
 				dm->ttmode = 1 - dm->ttmode;
@@ -738,7 +738,7 @@ void render_line(slide *sl, displayline *out, DrawMode *dm,
 						link_text_colour_index, surface, x,
 						out->y + st->text_ascent - st->fixed_ascent,
 						out->link == NULL || !st->underlinelinks ? 0 :
-						st->linespacing);
+						st->textsize);
 			}
 			else if(code == '/')
 			{
@@ -750,7 +750,7 @@ void render_line(slide *sl, displayline *out, DrawMode *dm,
 						link_text_colour_index, surface, x,
 						out->y + st->text_ascent - st->fixed_ascent,
 						out->link == NULL || !st->underlinelinks ? 0 :
-						st->linespacing);
+						st->textsize);
 			}
 		}
 		delete v;
@@ -886,7 +886,7 @@ void render_slide(slide *sl)
 	dm = new DrawMode;
 	dm->ttmode = dm->boldmode = dm->italicmode = 0;
 	dm->current_text_colour_index = st->textcolour;
-	dm->lastshift = 0;	
+	dm->lastshift = 0;
 	for(int i = 0; i < repr->count(); i++)
 	{
 		out = repr->item(i);
@@ -1211,8 +1211,10 @@ void highlight(slide *sl, int viewx, int viewy, int scale)
 		clearance = 2;
 		extent = 20;
 	}
-	else
+	else {
 		error("Impossible case in highlight()");
+		exit(-1);
+	}
 	
 	if(extent > sl->scr_w / scale)
 		extent = sl->scr_w / scale;

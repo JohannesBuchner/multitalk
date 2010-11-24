@@ -554,10 +554,13 @@ int linefile::readline(FILE *fp, char *buf, int max_len)
 	if(feof(fp))
 		return -1;
 	buf[0] = '\0';
-	fgets(buf, max_len, fp);
-	len = strlen(buf);
-	if(len > 0 && buf[len - 1] == '\n')
-		buf[--len] = '\0';
+	if (fgets(buf, max_len, fp) == NULL) {
+		len = -1;
+	} else {
+		len = strlen(buf);
+		if(len > 0 && buf[len - 1] == '\n')
+			buf[--len] = '\0';
+	}
 	return len;
 }
 
@@ -569,11 +572,11 @@ int linefile::load(const char *filename)
 	const int MAX_LINE_LEN = 1000;
 	
 	fp = fopen(filename, "r");
-	if(!fp)
+	if(fp == NULL)
 		return -1;
 	
 	buf = new char[MAX_LINE_LEN];
-	while(1)
+	while(!feof(fp))
 	{
 		len = readline(fp, buf, MAX_LINE_LEN);
 		if(len == -1)

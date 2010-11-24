@@ -986,6 +986,8 @@ Uint32 timer_callback_func(Uint32 interval, void *param)
 	user_event.user.data1 = NULL;
 	user_event.user.data2 = NULL;
 	SDL_PushEvent(&user_event);
+	/* param is ignored. */
+	(void)param;
 
 	return interval;
 }
@@ -1286,7 +1288,7 @@ int mainloop()
 	int prefy = viewy;
 	int restorex = 0, restorey = 0;
 	int drag_dist = 0;
-	int clickx, clicky;
+	int clickx = 0, clicky = 0;
 	int control_key = 0;
 	
 	slide *grabbed = NULL;
@@ -2424,13 +2426,14 @@ int main(int argc, char **argv)
 	init_gui(config->caption, export_html);
 	if(!export_html)
 		splash_screen();
-	if(export_html) printf("Loading styles...\n");
-	style_list = load_styles(config);
-	if(export_html) printf("Parsing talk...\n");
-	talk = parse_talk(talk_lf, style_list);
 	proc_stat_buf = new char[PROC_STAT_BUF_LEN];
 	while(1)
 	{
+		if(export_html) printf("Loading styles...\n");
+		style_list = load_styles(config);
+		if(export_html) printf("Parsing talk...\n");
+		talk = parse_talk(talk_lf, style_list);
+		
 		if(export_html) printf("Loading images...\n");
 		load_images();
 		if(export_html) printf("Measuring slides...\n");
@@ -2461,7 +2464,6 @@ int main(int argc, char **argv)
 		
 		free_render_list(render_list);
 		free_talk(talk);
-		talk = parse_talk(talk_lf, style_list);
 	}
 	return 0;
 }
@@ -2471,16 +2473,12 @@ void error(const char *format, ...)
 	static const int MAX_ERR_LEN = 200;
 	va_list args;
 	char *c = new char[MAX_ERR_LEN];
-	char *d = new char[MAX_ERR_LEN + 20];
 
 	va_start(args, format);
 	vsnprintf(c, MAX_ERR_LEN, format, args);
 	va_end(args);
 	c[MAX_ERR_LEN - 1] = '\0';
-	sprintf(d, "%s\n", c);
-	
-	fwrite(d, strlen(d), 1, stderr);
-	// syslog(LOG_INFO, d);
+	fprintf(stderr, "%s\n", c);
 	
 	exit(-1);
 }
