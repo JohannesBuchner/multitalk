@@ -364,20 +364,34 @@ void autoscroll(int *prefx, int *prefy)
 	}
 }
 
+#define WARP_PIXELS_PER_SECOND 25
+#define WARP_FPS 500
+#define WARP_FRAME_WAIT_MILLISECONDS (1000 / WARP_FPS)
+
+#include <math.h>
+#ifndef M_PI
+#define M_PI           3.14159265358979323846
+#endif
+#define MAX(a, b) ((a)>(b)?(a):(b))
+
+static int warp_to_midpoint(int start, int end, int i, int n) {
+	// implements chebyshev nodes for smooth scrolling
+	return (end + start) / 2. - (end - start) / 2. * cos(2 * i * M_PI / (2 * n));
+	// return (end - start) * i / n + start;
+}
+
 void warp_to(int x, int y)
 {
-	// From viewx, viewy; at end these should be set to x, y
-	int dx, dy;
-	const int warp_steps = 15;
+	// From viewx, viewy; at end we should land at x, y
+	int originx = viewx, originy = viewy;
+	const int warp_steps = MAX(abs(originy - y), abs(originx - x)) / WARP_PIXELS_PER_SECOND;
 	
 	for(int i = 0; i < warp_steps; i++)
 	{
-		dx = x - viewx;
-		dy = y - viewy;
-		viewx += dx / (warp_steps - i);
-		viewy += dy / (warp_steps - i);
+		viewx = warp_to_midpoint(originx, x, i, warp_steps - 1);
+		viewy = warp_to_midpoint(originy, y, i, warp_steps - 1);
 		refresh();
-		SDL_Delay(33);
+		SDL_Delay(WARP_FRAME_WAIT_MILLISECONDS);
 	}
 	// Flush events:
 	SDL_Event event;
