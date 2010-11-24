@@ -21,7 +21,9 @@ published by the Free Software Foundation. */
 #include <SDL/SDL_rotozoom.h>
 
 #include "datatype.h"
-#include "multitalk.h"
+#include "sdltools.h"
+#include "style.h"
+#include "files.h"
 
 typedef TTF_Font *TTF_FontPtr;
 typedef SDL_Surface *SDL_SurfacePtr;
@@ -253,13 +255,37 @@ int get_colour_index(const char *name)
 	return colour_index;
 }
 
+int get_named_colour_index(dictionary *d, const char *name)
+{
+	int colour_index;
+	
+	if(name[0] == '#')
+	{
+		colour_index = colour->search_add(name + 1);
+		if(colour_index == -1)
+			error("Incorrect hex colour %s", name);
+	}
+	else
+	{
+		colour_index = colour->names->find_ignore_case(name);
+		if(colour_index == -1) {
+			const char * othername = d->lookup_ignore_case(name);
+			if (othername == NULL)
+				error("Unknown colour %s", name);
+			else
+				colour_index = get_colour_index(othername);
+		}
+	}
+	return colour_index;
+}
+
 void set_colour_property(dictionary *d, const char *name, int *dest)
 {
 	const char *value;
 	
 	value = d->lookup_ignore_case(name);
 	if(value != NULL)
-		*dest = get_colour_index(value);
+		*dest = get_named_colour_index(d, value);
 }
 
 void set_integer_property(dictionary *d, const char *name, int *dest)

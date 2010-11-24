@@ -11,6 +11,7 @@ published by the Free Software Foundation. */
 #include <stdio.h>
 
 #include "datatype.h"
+#include "files.h"
 
 int to_screen_coords(int x);
 int to_design_coords(int x);
@@ -581,6 +582,10 @@ int linefile::load(const char *filename)
 		len = readline(fp, buf, MAX_LINE_LEN);
 		if(len == -1)
 			break;
+		
+		if (strncmp(buf, "@include ", 9) == 0) {
+			load(combine_path(get_path(filename), buf + 9));
+		}
 		// if(len > 0)
 		v->add(buf);
 	}
@@ -867,7 +872,7 @@ const char *dictionary::get_value(int n)
 
 const char *dictionary::lookup(const char *name)
 {
-	for(int i = 0; i < names->count(); i++)
+	for(int i = names->count() - 1; i >= 0; i--)
 	{
 		if(!strcmp(names->item(i), name))
 			return values->item(i);
@@ -877,7 +882,7 @@ const char *dictionary::lookup(const char *name)
 
 const char *dictionary::lookup_ignore_case(const char *name)
 {
-	for(int i = 0; i < names->count(); i++)
+	for(int i = names->count() - 1; i >= 0; i--)
 	{
 		if(!strcasecmp(names->item(i), name))
 			return values->item(i);
@@ -890,3 +895,4 @@ void dictionary::add(const char *name, const char *value)
 	names->add(name);
 	values->add(value);
 }
+
